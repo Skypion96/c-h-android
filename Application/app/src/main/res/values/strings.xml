@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Computer-Horizon</string>
+    <string name="Open">Computer-Horizon</string>
+    <string name="Close">Computer-Horizon</string>
 </resources>
