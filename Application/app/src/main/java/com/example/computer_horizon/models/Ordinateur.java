@@ -139,4 +139,24 @@ public class Ordinateur {
     public void setPrixReduc(double prixReduc) {
         this.prixReduc = prixReduc;
     }
+
+
+    @Override
+    public String toString() {
+        return "Ordinateur{" +
+                "nom='" + nom + '\'' +
+                ", marque='" + marque + '\'' +
+                ", prix=" + prix +
+                ", nomProc='" + nomProc + '\'' +
+                ", nomCG='" + nomCG + '\'' +
+                ", capacite='" + capacite + '\'' +
+                ", memoireV=" + memoireV +
+                ", ssd=" + ssd +
+                ", description='" + description + '\'' +
+                ", qte=" + qte +
+                ", capaciteSsd='" + capaciteSsd + '\'' +
+                ", img='" + img + '\'' +
+                ", prixReduc=" + prixReduc +
+                '}';
+    }
 }

@@ -19,6 +19,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MAIN_ACTIVITY = "EXTRA_MAIN_ACTIVITY";
+    private Ordinateur o =new Ordinateur("tt","tt",3.25,"tt","tt","55",5,false,"ttt",5,"tt","pppp",5.00);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
     public void startConnexion(View view) {
         Intent intent = new Intent(MainActivity.this, Connexion.class);
         startActivity(intent);
@@ -36,6 +36,22 @@ public class MainActivity extends AppCompatActivity {
     public void startComposant(View view) {
         Intent intent = new Intent(MainActivity.this,Composant.class);
         startActivity(intent);
+    }
+
+    public void add(View view){
+        OrdinateurRepositoryService.post(o).enqueue(new Callback<Ordinateur>() {
+            @Override
+            public void onResponse(Call<Ordinateur> call, Response<Ordinateur> response) {
+                Log.i("ordi","fait");
+
+            }
+
+            @Override
+            public void onFailure(Call<Ordinateur> call, Throwable t) {
+                Log.i("ordierr","test");
+
+            }
+        });
     }
 
 }
