@@ -25,17 +25,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        OrdinateurRepositoryService.query().enqueue(new Callback<List<Ordinateur>>() {
-            @Override
-            public void onResponse(Call<List<Ordinateur>> call, Response<List<Ordinateur>> response) {
-                Log.i("Ordinateur",response.body().toString());
-            }
-
-            @Override
-            public void onFailure(Call<List<Ordinateur>> call, Throwable t) {
-                Log.i("OrdinateurError",t.toString());
-            }
-        });
 
     }
 

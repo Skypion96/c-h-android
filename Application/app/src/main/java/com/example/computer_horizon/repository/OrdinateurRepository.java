@@ -1,5 +1,6 @@
 package com.example.computer_horizon.repository;
 
+import com.example.computer_horizon.Configuration;
 import com.example.computer_horizon.models.Ordinateur;
 
 import java.util.List;
@@ -14,12 +15,12 @@ import retrofit2.http.Path;
 
 public interface OrdinateurRepository {
 
-    @GET("ordinateur")
+    @GET(Configuration.API_ORDINATEUR)
     Call<List<Ordinateur>> query();
-    @POST("ordinateur")
+    @POST(Configuration.API_ORDINATEUR)
     Call<Ordinateur> post(@Body Ordinateur todo);
-    @DELETE("ordinateur/{nom}")
+    @DELETE(Configuration.API_ORDINATEUR +"/{nom}")
     Call<Void> delete(@Path("nom")String nom);
-    @PUT("ordinateur")
+    @PUT(Configuration.API_ORDINATEUR)
     Call<Void> put(@Body Ordinateur todo);
 }
