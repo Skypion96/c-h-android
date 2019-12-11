@@ -29,13 +29,13 @@ public class MainActivity extends AppCompatActivity {
         OrdinateurRepositoryService.query().enqueue(new Callback<List<Ordinateur>>() {
             @Override
             public void onResponse(Call<List<Ordinateur>> call, Response<List<Ordinateur>> response) {
-                Log.i("ordi",response.body().toString());
+                Log.i("ordi",response.message());
 
             }
 
             @Override
             public void onFailure(Call<List<Ordinateur>> call, Throwable t) {
-                Log.i("ordi",t.toString());
+                Log.i("ordierr",t.getMessage());
 
             }
         });
