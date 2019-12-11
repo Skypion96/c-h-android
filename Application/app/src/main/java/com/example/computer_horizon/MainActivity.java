@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /*public void add(View view){
+    public void add(View view){
         OrdinateurRepositoryService.post(o).enqueue(new Callback<Ordinateur>() {
             @Override
             public void onResponse(Call<Ordinateur> call, Response<Ordinateur> response) {
@@ -64,6 +64,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-    }*/
+    }
 
 }
