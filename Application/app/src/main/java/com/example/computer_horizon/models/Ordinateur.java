@@ -11,7 +11,7 @@ public class Ordinateur implements/* Parcelable,*/ Serializable {
     private String marque;
     private double prix;
     private String nomProc;
-    private String nomCG;
+    private String nomCg;
     private String capacite;
     private int memoireV;
     private boolean ssd;
@@ -23,14 +23,14 @@ public class Ordinateur implements/* Parcelable,*/ Serializable {
 
 
     public Ordinateur(String nom, String marque, double prix,
-                      String nomProc, String nomCG, String capacite,
+                      String nomProc, String nomCg, String capacite,
                       int memoireV, boolean ssd, String description,
                       int qte, String capaciteSsd, String img, double prixReduc) {
         this.nom = nom;
         this.marque = marque;
         this.prix = prix;
         this.nomProc = nomProc;
-        this.nomCG = nomCG;
+        this.nomCg = nomCg;
         this.capacite = capacite;
         this.memoireV = memoireV;
         this.ssd = ssd;
@@ -46,7 +46,7 @@ public class Ordinateur implements/* Parcelable,*/ Serializable {
         marque = in.readString();
         prix = in.readDouble();
         nomProc = in.readString();
-        nomCG = in.readString();
+        nomCg = in.readString();
         capacite = in.readString();
         memoireV = in.readInt();
         ssd = in.readBoolean();
@@ -102,11 +102,11 @@ public class Ordinateur implements/* Parcelable,*/ Serializable {
     }
 
     public String getNomCG() {
-        return nomCG;
+        return nomCg;
     }
 
     public void setNomCG(String nomCG) {
-        this.nomCG = nomCG;
+        this.nomCg = nomCG;
     }
 
     public String getCapacite() {
@@ -181,7 +181,7 @@ public class Ordinateur implements/* Parcelable,*/ Serializable {
                 ", marque='" + marque + '\'' +
                 ", prix=" + prix +
                 ", nomProc='" + nomProc + '\'' +
-                ", nomCG='" + nomCG + '\'' +
+                ", nomCG='" + nomCg + '\'' +
                 ", capacite='" + capacite + '\'' +
                 ", memoireV=" + memoireV +
                 ", ssd=" + ssd +
