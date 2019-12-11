@@ -1,6 +1,9 @@
 package com.example.computer_horizon.models;
 
-public class Ordinateur {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Ordinateur implements Parcelable{
 
     private String nom;
     private String marque;
@@ -35,6 +38,34 @@ public class Ordinateur {
         this.img = img;
         this.prixReduc = prixReduc;
     }
+
+    public Ordinateur(Parcel in) {
+        nom = in.readString();
+        marque = in.readString();
+        prix = in.readDouble();
+        nomProc = in.readString();
+        nomCG = in.readString();
+        capacite = in.readString();
+        memoireV = in.readInt();
+        ssd = in.readBoolean();
+        description = in.readString();
+        qte = in.readInt();
+        capaciteSsd = in.readString();
+        img = in.readString();
+        prixReduc = in.readDouble();
+    }
+
+    public static final Creator<Ordinateur> CREATOR = new Creator<Ordinateur>() {
+        @Override
+        public Ordinateur createFromParcel(Parcel parcel) {
+            return new Ordinateur(parcel);
+        }
+
+        @Override
+        public Ordinateur[] newArray(int i) {
+            return new Ordinateur[0];
+        }
+    };
 
     public String getNom() {
         return nom;
@@ -158,5 +189,19 @@ public class Ordinateur {
                 ", img='" + img + '\'' +
                 ", prixReduc=" + prixReduc +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+    }
+
+    public char extractLetterFromTitle() {
+        return nom == null ? ' ' : nom.charAt(0);
     }
 }
