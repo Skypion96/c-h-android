@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -26,12 +27,16 @@ public class Composant extends AppCompatActivity implements AdapterView.OnItemCl
 
     private OrdinateurAdapter adapter;
     private ListView mListView;
-    private List<Ordinateur> bookmarks;
+    private List<Ordinateur> ordis;
 
-    private void populateListView(List<Ordinateur> ordiList) {
+
+
+    private void populateListView(List<Ordinateur> ordi) {
         mListView = findViewById(R.id.lv_ordis);
-        adapter = new OrdinateurAdapter(this,R.id.lv_ordis,ordiList);
+        adapter = new OrdinateurAdapter(this,R.id.lv_ordis,ordi);
         mListView.setAdapter(adapter);
+        ordis=ordi;
+        mListView.setOnItemClickListener(this);
     }
 
     @Override
@@ -40,26 +45,26 @@ public class Composant extends AppCompatActivity implements AdapterView.OnItemCl
         setContentView(R.layout.activity_composant);
 
 
-
         Call<List<Ordinateur>> call = OrdinateurRepositoryService.query();
         call.enqueue(new Callback<List<Ordinateur>>() {
 
             @Override
             public void onResponse(Call<List<Ordinateur>> call, Response<List<Ordinateur>> response) {
                 populateListView(response.body());
+
             }
             @Override
             public void onFailure(Call<List<Ordinateur>> call, Throwable throwable) {
                 Toast.makeText(Composant.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
+
     }
 
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        final Ordinateur bookmark = bookmarks.get(position);
-        Intent intent = new Intent(Composant.this, Ordinateur.class);
-        String message = bookmark.getNom();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
+        final Ordinateur bookmark = ordis.get(i);
+        Log.i("ordi",bookmark.getMarque());
     }
 }
