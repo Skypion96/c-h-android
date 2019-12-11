@@ -3,7 +3,9 @@ package com.example.computer_horizon.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Ordinateur implements Parcelable{
+import java.io.Serializable;
+
+public class Ordinateur implements/* Parcelable,*/ Serializable {
 
     private String nom;
     private String marque;
@@ -55,7 +57,7 @@ public class Ordinateur implements Parcelable{
         prixReduc = in.readDouble();
     }
 
-    public static final Creator<Ordinateur> CREATOR = new Creator<Ordinateur>() {
+    /*public static final Creator<Ordinateur> CREATOR = new Creator<Ordinateur>() {
         @Override
         public Ordinateur createFromParcel(Parcel parcel) {
             return new Ordinateur(parcel);
@@ -65,7 +67,7 @@ public class Ordinateur implements Parcelable{
         public Ordinateur[] newArray(int i) {
             return new Ordinateur[0];
         }
-    };
+    };*/
 
     public String getNom() {
         return nom;
@@ -191,15 +193,28 @@ public class Ordinateur implements Parcelable{
                 '}';
     }
 
-    @Override
+    /*@Override
     public int describeContents() {
         return 0;
     }
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(nom);
+        parcel.writeString(marque);
+        parcel.writeDouble(prix);
+        parcel.writeString(nomProc);
+        parcel.writeString(nomCG);
+        parcel.writeString(capacite);
+        parcel.writeInt(memoireV);
+        parcel.writeBoolean(ssd);
+        parcel.writeString(description);
+        parcel.writeInt(qte);
+        parcel.writeString(capaciteSsd);
+        parcel.writeString(img);
+        parcel.writeDouble(prixReduc);
 
-    }
+    }*/
 
     public char extractLetterFromTitle() {
         return nom == null ? ' ' : nom.charAt(0);

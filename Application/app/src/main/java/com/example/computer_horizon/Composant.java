@@ -15,6 +15,7 @@ import com.example.computer_horizon.models.Ordinateur;
 import com.example.computer_horizon.models.OrdinateurAdapter;
 import com.example.computer_horizon.services.OrdinateurRepositoryService;
 
+import java.io.Serializable;
 import java.util.List;
 
 import retrofit2.Call;
@@ -23,11 +24,12 @@ import retrofit2.Response;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
-public class Composant extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class Composant extends AppCompatActivity implements AdapterView.OnItemClickListener, Serializable {
 
     private OrdinateurAdapter adapter;
     private ListView mListView;
     private List<Ordinateur> ordis;
+    public static final String EXTRA_MAIN_ACTIVITY = "EXTRA_MAIN_ACTIVITY";
 
 
 
@@ -65,6 +67,8 @@ public class Composant extends AppCompatActivity implements AdapterView.OnItemCl
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
         final Ordinateur bookmark = ordis.get(i);
-        Log.i("ordi",bookmark.getMarque());
+        Intent intent = new Intent(Composant.this,ComposantAll.class);
+        intent.putExtra(EXTRA_MAIN_ACTIVITY,bookmark);
+        startActivity(intent);
     }
 }
