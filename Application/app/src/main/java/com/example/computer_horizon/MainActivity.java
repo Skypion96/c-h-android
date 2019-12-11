@@ -26,6 +26,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        OrdinateurRepositoryService.query().enqueue(new Callback<List<Ordinateur>>() {
+            @Override
+            public void onResponse(Call<List<Ordinateur>> call, Response<List<Ordinateur>> response) {
+                Log.i("ordi",response.body().toString());
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Ordinateur>> call, Throwable t) {
+                Log.i("ordi",t.toString());
+
+            }
+        });
 
     }
     public void startConnexion(View view) {
@@ -38,12 +51,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void add(View view){
+    /*public void add(View view){
         OrdinateurRepositoryService.post(o).enqueue(new Callback<Ordinateur>() {
             @Override
             public void onResponse(Call<Ordinateur> call, Response<Ordinateur> response) {
                 Log.i("ordi","fait");
-
             }
 
             @Override
@@ -52,6 +64,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 
 }
