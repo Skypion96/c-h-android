@@ -1,5 +1,7 @@
 package com.example.computer_horizon.models;
 
+import retrofit2.Call;
+
 public class UserConnected {
 
     private String token;

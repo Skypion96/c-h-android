@@ -1,6 +1,7 @@
 package com.example.computer_horizon.repository;
 
 import com.example.computer_horizon.Configuration;
+import com.example.computer_horizon.models.UserConnected;
 import com.example.computer_horizon.models.Utilisateur;
 
 import java.util.List;

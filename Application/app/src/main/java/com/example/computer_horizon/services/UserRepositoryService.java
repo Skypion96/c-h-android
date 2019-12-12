@@ -2,12 +2,14 @@ package com.example.computer_horizon.services;
 
 import com.example.computer_horizon.Configuration;
 import com.example.computer_horizon.models.Ordinateur;
+import com.example.computer_horizon.models.UserConnected;
 import com.example.computer_horizon.models.Utilisateur;
 import com.example.computer_horizon.repository.OrdinateurRepository;
 import com.example.computer_horizon.repository.UserRepository;
 
 import java.util.List;
 
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -41,5 +43,9 @@ public class UserRepositoryService {
                 .addConverterFactory(GsonConverterFactory.create())//build
                 .build()//retrofit instance
                 .create(UserRepository.class);//TodoRepository instance
+    }
+
+    public static UserConnected authenticate(String mail, String mdp){
+        return new UserConnected(ourInstance.authenticate(mail, mdp).getToken());
     }
 }

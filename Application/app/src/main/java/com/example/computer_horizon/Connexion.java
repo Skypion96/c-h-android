@@ -20,6 +20,7 @@ import com.example.computer_horizon.models.Login;
 import com.example.computer_horizon.models.UserConnected;
 import com.example.computer_horizon.models.Utilisateur;
 import com.example.computer_horizon.repository.UserClient;
+import com.example.computer_horizon.services.UserRepositoryService;
 
 public class Connexion extends AppCompatActivity {
 
@@ -43,7 +44,7 @@ public class Connexion extends AppCompatActivity {
                 mdpText = findViewById(R.id.mdp);
                 String mdp = mdpText.getText().toString();
 
-                login(mail, mdp);
+                //login(mail, mdp);
                 if(success == true){
                     Intent navigate = new Intent(Connexion.this, MainActivity.class);
                     startActivity(navigate);
@@ -54,10 +55,17 @@ public class Connexion extends AppCompatActivity {
                 }
             }
         });
+
     }
 
+   /* private UserConnected login(String mail, String mdp){
+        return UserRepositoryService.authenticate(mail, mdp);
+        Call<UserConnected> call = UserRepositoryService.authenticate(mail, mdp);
+        call.enqueue();
+    }*/
 
-    Retrofit.Builder builder = new Retrofit.Builder()
+
+    /*Retrofit.Builder builder = new Retrofit.Builder()
             .baseUrl("http://10.0.2.2:5001/")
             .addConverterFactory(GsonConverterFactory.create());
 
@@ -66,6 +74,9 @@ public class Connexion extends AppCompatActivity {
     UserClient userClient = retrofit.create(UserClient.class);
 
     private void login(String mail, String mdp){
+
+        UserRepositoryService.getInstance().authenticate(mail, mdp)
+
         Login login = new Login(mail, mdp);
         Call<Utilisateur> call = userClient.login(login);
 
@@ -92,6 +103,6 @@ public class Connexion extends AppCompatActivity {
                 Toast.makeText(Connexion.this, "an error happened", Toast.LENGTH_SHORT).show();
             }
         });
-    }
+    }*/
 
 }
