@@ -38,7 +38,7 @@ public class CarteGViewAll extends AppCompatActivity {
         marque.setText(cg.getMarque());
         prix.setText(nm.format(cg.getPrix()));
         frequence.setText(cg.getFrequence());
-        memoireVideo.setText(nm.format(cg.getMemoireV()));
+        memoireVideo.setText(cg.getMemoireV());
 
     }
 }

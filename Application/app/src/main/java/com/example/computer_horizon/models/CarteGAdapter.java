@@ -30,9 +30,9 @@ public class CarteGAdapter extends ArrayAdapter<CarteG> {
             v = inflater.inflate(R.layout.item_carte_graphique, null);
         }
 
-        TextView letter = v.findViewById(R.id.tv_letter);
-        TextView title = v.findViewById(R.id.tv_title);
-        TextView url = v.findViewById(R.id.tv_url);
+        TextView letter = v.findViewById(R.id.tv_letter_cg);
+        TextView title = v.findViewById(R.id.tv_title_cg);
+        TextView url = v.findViewById(R.id.tv_url_cg);
 
         final CarteG cg = getItem(position);
 

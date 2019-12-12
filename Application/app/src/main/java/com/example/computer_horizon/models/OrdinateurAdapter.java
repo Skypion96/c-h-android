@@ -30,9 +30,9 @@ public class OrdinateurAdapter extends ArrayAdapter<Ordinateur> {
             v = inflater.inflate(R.layout.item_ordinateur, null);
         }
 
-        TextView letter = v.findViewById(R.id.tv_letter);
-        TextView title = v.findViewById(R.id.tv_title);
-        TextView url = v.findViewById(R.id.tv_url);
+        TextView letter = v.findViewById(R.id.tv_letter_ordi);
+        TextView title = v.findViewById(R.id.tv_title_ordi);
+        TextView url = v.findViewById(R.id.tv_url_ordi);
 
         final Ordinateur ordi = getItem(position);
 

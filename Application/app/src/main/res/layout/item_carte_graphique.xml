@@ -11,7 +11,7 @@
 
 
         <TextView
-            android:id="@+id/tv_letter"
+            android:id="@+id/tv_letter_cg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
@@ -24,18 +24,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_title_cg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textSize="17sp"
+            android:textSize="12sp"
             android:text="Name"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_letter"
+            app:layout_constraintStart_toEndOf="@+id/tv_letter_cg"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_url"
+            android:id="@+id/tv_url_cg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -43,6 +43,6 @@
             android:text="URL"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_letter" />
+            app:layout_constraintStart_toEndOf="@+id/tv_letter_cg" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

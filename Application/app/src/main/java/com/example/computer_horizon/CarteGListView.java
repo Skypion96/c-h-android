@@ -44,7 +44,7 @@ public class CarteGListView extends AppCompatActivity implements AdapterView.OnI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_processeur_list_view);
+        setContentView(R.layout.activity_carte_glist_view);
 
 
         Call<List<CarteG>> call = CarteGraphiqueRepositoryService.query();

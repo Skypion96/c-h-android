@@ -8,17 +8,17 @@ public class CarteG implements Serializable {
     private String marque;
     private double prix;
     private String frequence;
-    private int memoireV;
+    private String memoireVideo;
     private int qte;
     private String img;
     private double prixReduc;
 
-    public CarteG(String nom, String marque, double prix, String frequence, int memoireV, int qte, String img, double prixReduc) {
+    public CarteG(String nom, String marque, double prix, String frequence, String memoireV, int qte, String img, double prixReduc) {
         this.nom = nom;
         this.marque = marque;
         this.prix = prix;
         this.frequence = frequence;
-        this.memoireV = memoireV;
+        this.memoireVideo = memoireV;
         this.qte = qte;
         this.img = img;
         this.prixReduc = prixReduc;
@@ -56,12 +56,12 @@ public class CarteG implements Serializable {
         this.frequence = frequence;
     }
 
-    public int getMemoireV() {
-        return memoireV;
+    public String getMemoireV() {
+        return memoireVideo;
     }
 
-    public void setMemoireV(int memoireV) {
-        this.memoireV = memoireV;
+    public void setMemoireV(String memoireV) {
+        this.memoireVideo = memoireV;
     }
 
     public int getQte() {
@@ -95,7 +95,7 @@ public class CarteG implements Serializable {
                 ", marque='" + marque + '\'' +
                 ", prix=" + prix +
                 ", frequence='" + frequence + '\'' +
-                ", memoireV=" + memoireV +
+                ", memoireV=" + memoireVideo +
                 ", qte=" + qte +
                 ", img='" + img + '\'' +
                 ", prixReduc=" + prixReduc +
