@@ -35,7 +35,7 @@
         app:layout_constraintVertical_bias="0.427" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/mail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -62,7 +62,7 @@
         app:layout_constraintVertical_bias="0.176" />
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/mdp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -71,11 +71,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/mail"
         app:layout_constraintVertical_bias="0.146" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/connexion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Connexion"
