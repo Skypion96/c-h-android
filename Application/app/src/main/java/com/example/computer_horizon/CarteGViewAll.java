@@ -25,7 +25,6 @@ public class CarteGViewAll extends AppCompatActivity {
         setContentView(R.layout.activity_carte_gview_all);
         CarteG cg = (CarteG) getIntent().getSerializableExtra(CarteGListView.EXTRA_MAIN_ACTIVITY);
         NumberFormat nm = NumberFormat.getNumberInstance();
-        Log.i("ordi",cg.getMarque());
         nom = findViewById(R.id.nom_cg);
         marque = findViewById(R.id.marque_cg);
         prix = findViewById(R.id.prix_cg);

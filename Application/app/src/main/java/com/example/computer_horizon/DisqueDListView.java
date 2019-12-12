@@ -69,7 +69,6 @@ public class DisqueDListView extends AppCompatActivity implements AdapterView.On
         final DisqueD bookmark = disques.get(i);
         Intent intent = new Intent(DisqueDListView.this, DisqueDViewAll.class);
         intent.putExtra(EXTRA_MAIN_ACTIVITY,bookmark);
-        Log.i("ordi",bookmark.getMarque());
         startActivity(intent);
     }
 

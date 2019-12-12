@@ -68,7 +68,6 @@ public class ProcesseurListView extends AppCompatActivity implements AdapterView
         final Processeur bookmark = procs.get(i);
         Intent intent = new Intent(ProcesseurListView.this, ProcesseurViewAll.class);
         intent.putExtra(EXTRA_MAIN_ACTIVITY,bookmark);
-        Log.i("ordi",bookmark.getMarque());
         startActivity(intent);
     }
 }

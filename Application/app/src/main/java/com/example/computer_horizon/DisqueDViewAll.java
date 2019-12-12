@@ -26,7 +26,6 @@ public class DisqueDViewAll extends AppCompatActivity {
         setContentView(R.layout.activity_disque_dview_all);
         DisqueD dd = (DisqueD) getIntent().getSerializableExtra(DisqueDListView.EXTRA_MAIN_ACTIVITY);
         NumberFormat nm = NumberFormat.getNumberInstance();
-        Log.i("ordi",dd.getMarque());
         nom = findViewById(R.id.nom_dd);
         marque = findViewById(R.id.marque_dd);
         prix = findViewById(R.id.prix_dd);

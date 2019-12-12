@@ -69,7 +69,6 @@ public class CarteGListView extends AppCompatActivity implements AdapterView.OnI
         final CarteG bookmark = cartes.get(i);
         Intent intent = new Intent(CarteGListView.this, CarteGViewAll.class);
         intent.putExtra(EXTRA_MAIN_ACTIVITY,bookmark);
-        Log.i("ordi",bookmark.getMarque());
         startActivity(intent);
     }
 }
