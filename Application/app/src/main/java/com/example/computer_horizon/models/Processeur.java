@@ -1,5 +1,7 @@
 package com.example.computer_horizon.models;
 
+import android.os.Parcel;
+
 import java.io.Serializable;
 
 public class Processeur implements Serializable {
@@ -28,6 +30,20 @@ public class Processeur implements Serializable {
         this.cote = cote;
         this.dateCote = dateCote;
         this.prixReduc = prixReduc;
+    }
+
+    public Processeur(Parcel in) {
+        nom = in.readString();
+        marque = in.readString();
+        nbCoeurs = in.readInt();
+        frequence = in.readString();
+        prix = in.readDouble();
+        qte = in.readInt();
+        img = in.readString();
+        reduction = in.readInt();
+        cote = in.readInt();
+        dateCote = in.readString();
+        prixReduc = in.readDouble();
     }
 
     public String getNom() {
