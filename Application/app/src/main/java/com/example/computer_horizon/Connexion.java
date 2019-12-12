@@ -75,18 +75,21 @@ public class Connexion extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     //Toast.makeText(Connexion.this, response.body().getToken(), Toast.LENGTH_SHORT).show();
                     SharedPreferences preferencesToken =getSharedPreferences("token", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferencesToken.edit();
                     //String token = response.body().getToken();
-                    //preferencesToken.edit().putString("token", token).apply();
+                    //editor.putString("token", token);
+                    //editor.apply();
                     success = true;
+                    Toast.makeText(Connexion.this, success+"It works", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(Connexion.this, "login not correct: (", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Connexion.this, "login not correct", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Utilisateur> call, Throwable t) {
-                Toast.makeText(Connexion.this, "error: (", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Connexion.this, "an error happened", Toast.LENGTH_SHORT).show();
             }
         });
     }
