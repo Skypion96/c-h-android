@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".CarteGViewAll">
     <TextView
-        android:id="@+id/nom"
+        android:id="@+id/nom_cg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -43,7 +43,7 @@
         app:layout_constraintVertical_bias="0.46" />
 
     <TextView
-        android:id="@+id/prix"
+        android:id="@+id/prix_cg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -55,7 +55,7 @@
         app:layout_constraintVertical_bias="0.379" />
 
     <TextView
-        android:id="@+id/memoireVideo"
+        android:id="@+id/memoireVideo_cg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -67,7 +67,7 @@
         app:layout_constraintVertical_bias="0.557" />
 
     <TextView
-        android:id="@+id/marque"
+        android:id="@+id/marque_cg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"

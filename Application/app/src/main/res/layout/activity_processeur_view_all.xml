@@ -7,7 +7,7 @@
     tools:context=".ProcesseurViewAll">
 
     <TextView
-        android:id="@+id/nom"
+        android:id="@+id/nom_proc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -44,7 +44,7 @@
         app:layout_constraintVertical_bias="0.46" />
 
     <TextView
-        android:id="@+id/prix"
+        android:id="@+id/prix_proc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -56,7 +56,7 @@
         app:layout_constraintVertical_bias="0.379" />
 
     <TextView
-        android:id="@+id/nbCoeurs"
+        android:id="@+id/nbCoeurs_proc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -68,7 +68,7 @@
         app:layout_constraintVertical_bias="0.557" />
 
     <TextView
-        android:id="@+id/marque"
+        android:id="@+id/marque_proc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"

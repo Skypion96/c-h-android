@@ -7,7 +7,7 @@
     tools:context=".OrdinateurAll">
 
     <TextView
-        android:id="@+id/nom"
+        android:id="@+id/nom_ordi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -56,7 +56,7 @@
         app:layout_constraintVertical_bias="0.808" />
 
     <TextView
-        android:id="@+id/descr"
+        android:id="@+id/descr_ordi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -81,7 +81,7 @@
         app:layout_constraintVertical_bias="0.301" />
 
     <TextView
-        android:id="@+id/carteG"
+        android:id="@+id/carteG_ordi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -93,7 +93,7 @@
         app:layout_constraintVertical_bias="0.397" />
 
     <TextView
-        android:id="@+id/capacite"
+        android:id="@+id/capacite_ordi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -105,7 +105,7 @@
         app:layout_constraintVertical_bias="0.491" />
 
     <TextView
-        android:id="@+id/ssd"
+        android:id="@+id/ssd_ordi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -117,7 +117,7 @@
         app:layout_constraintVertical_bias="0.667" />
 
     <TextView
-        android:id="@+id/prix"
+        android:id="@+id/prix_ordi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -129,7 +129,7 @@
         app:layout_constraintVertical_bias="0.219" />
 
     <TextView
-        android:id="@+id/marque"
+        android:id="@+id/marque_ordi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -141,7 +141,7 @@
         app:layout_constraintVertical_bias="0.132" />
 
     <TextView
-        android:id="@+id/proc"
+        android:id="@+id/proc_ordi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -213,7 +213,7 @@
         app:layout_constraintVertical_bias="0.219" />
 
     <TextView
-        android:id="@+id/capSSD"
+        android:id="@+id/capSSD_ordi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -225,7 +225,7 @@
         app:layout_constraintVertical_bias="0.75" />
 
     <TextView
-        android:id="@+id/memoireVOrdi"
+        android:id="@+id/memoireVOrdi_ordi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"

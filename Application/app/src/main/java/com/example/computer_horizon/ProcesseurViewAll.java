@@ -25,11 +25,11 @@ public class ProcesseurViewAll extends AppCompatActivity {
         Processeur proc = (Processeur) getIntent().getSerializableExtra(ProcesseurListView.EXTRA_MAIN_ACTIVITY);
         NumberFormat nm = NumberFormat.getNumberInstance();
         Log.i("ordi",proc.getMarque());
-        nom = findViewById(R.id.nom);
-        marque = findViewById(R.id.marque);
-        prix = findViewById(R.id.prix);
+        nom = findViewById(R.id.nom_proc);
+        marque = findViewById(R.id.marque_proc);
+        prix = findViewById(R.id.prix_proc);
         frequence = findViewById(R.id.frequenceProc);
-        nbCoeurs = findViewById(R.id.nbCoeurs);
+        nbCoeurs = findViewById(R.id.nbCoeurs_proc);
 
 
 

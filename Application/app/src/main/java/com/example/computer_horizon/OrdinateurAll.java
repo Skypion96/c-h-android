@@ -27,16 +27,16 @@ public class OrdinateurAll extends AppCompatActivity {
          com.example.computer_horizon.models.Ordinateur ordi = (com.example.computer_horizon.models.Ordinateur)getIntent().getSerializableExtra(Ordinateur.EXTRA_MAIN_ACTIVITY);
         NumberFormat nm = NumberFormat.getNumberInstance();
 
-        nom = findViewById(R.id.nom);
-        marque = findViewById(R.id.marque);
-        prix = findViewById(R.id.prix);
-        processeur = findViewById(R.id.proc);
-        carteG = findViewById(R.id.carteG);
-        capacite = findViewById(R.id.capacite);
-        memoireV = findViewById(R.id.memoireVOrdi);
-        ssd = findViewById(R.id.ssd);
-        description = findViewById(R.id.descr);
-        capaciteSSD = findViewById(R.id.capSSD);
+        nom = findViewById(R.id.nom_ordi);
+        marque = findViewById(R.id.marque_ordi);
+        prix = findViewById(R.id.prix_ordi);
+        processeur = findViewById(R.id.proc_ordi);
+        carteG = findViewById(R.id.carteG_ordi);
+        capacite = findViewById(R.id.capacite_ordi);
+        memoireV = findViewById(R.id.memoireVOrdi_ordi);
+        ssd = findViewById(R.id.ssd_ordi);
+        description = findViewById(R.id.descr_ordi);
+        capaciteSSD = findViewById(R.id.capSSD_ordi);
 
 
         nom.setText(ordi.getNom());
