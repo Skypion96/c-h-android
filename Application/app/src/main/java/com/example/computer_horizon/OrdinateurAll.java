@@ -3,16 +3,12 @@ package com.example.computer_horizon;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.EditText;
 import android.widget.TextView;
-
-import com.example.computer_horizon.models.Ordinateur;
 
 import java.text.NumberFormat;
 
 
-public class ComposantAll extends AppCompatActivity {
+public class OrdinateurAll extends AppCompatActivity {
 
     TextView nom;
     TextView marque;
@@ -27,15 +23,15 @@ public class ComposantAll extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_composant_all);
-         Ordinateur ordi = (Ordinateur)getIntent().getSerializableExtra(Composant.EXTRA_MAIN_ACTIVITY);
+        setContentView(R.layout.activity_ordinateur_all);
+         com.example.computer_horizon.models.Ordinateur ordi = (com.example.computer_horizon.models.Ordinateur)getIntent().getSerializableExtra(Ordinateur.EXTRA_MAIN_ACTIVITY);
         NumberFormat nm = NumberFormat.getNumberInstance();
 
         nom = findViewById(R.id.nom);
         marque = findViewById(R.id.marque);
         prix = findViewById(R.id.prix);
-        processeur = findViewById(R.id.proc);
-        carteG = findViewById(R.id.carteG);
+        processeur = findViewById(R.id.frequence);
+        carteG = findViewById(R.id.nbCoeurs);
         capacite = findViewById(R.id.capacite);
         memoireV = findViewById(R.id.memoireV);
         ssd = findViewById(R.id.ssd);

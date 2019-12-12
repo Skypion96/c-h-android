@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ComposantAll">
+    tools:context=".OrdinateurAll">
 
     <TextView
         android:id="@+id/nom"
@@ -66,7 +66,7 @@
         app:layout_constraintHorizontal_bias="0.144"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.932" />
+        app:layout_constraintVertical_bias="0.977" />
 
     <TextView
         android:id="@+id/textView22"
@@ -93,7 +93,7 @@
         app:layout_constraintVertical_bias="0.591" />
 
     <TextView
-        android:id="@+id/carteG"
+        android:id="@+id/nbCoeurs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -153,7 +153,7 @@
         app:layout_constraintVertical_bias="0.132" />
 
     <TextView
-        android:id="@+id/proc"
+        android:id="@+id/frequence"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"

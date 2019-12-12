@@ -4,25 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.example.computer_horizon.models.Ordinateur;
 import com.example.computer_horizon.services.OrdinateurRepositoryService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MAIN_ACTIVITY = "EXTRA_MAIN_ACTIVITY";
-    private Ordinateur o =new Ordinateur("tt","tt",3.25,"tt","tt","55",5,false,"ttt",5,"tt","pppp",5.00);
+    private com.example.computer_horizon.models.Ordinateur o =new com.example.computer_horizon.models.Ordinateur("tt","tt",3.25,"tt","tt","55",5,false,"ttt",5,"tt","pppp",5.00);
 
-    private List<Ordinateur> ordis;
+    private List<com.example.computer_horizon.models.Ordinateur> ordis;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,14 +30,15 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void startComposant(View view) {
-        Intent intent = new Intent(MainActivity.this,Composant.class);
+    public void startOrdinateur(View view) {
+        Intent intent = new Intent(MainActivity.this, Ordinateur.class);
         startActivity(intent);
     }
 
-    public void loadOrdi(){
-        ordis = new ArrayList<>();
-        OrdinateurRepositoryService.query();
+    public void startProcesseur(View view) {
+        Intent intent = new Intent(MainActivity.this, ProcesseurListView.class);
+        startActivity(intent);
     }
+
 
 }
