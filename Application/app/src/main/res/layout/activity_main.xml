@@ -21,16 +21,17 @@
     <Button
         android:id="@+id/button2"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:backgroundTint="#2B7523"
+        android:layout_width="336dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#1B3FC0"
         android:onClick="startConnexion"
         android:text="Connexion"
         android:textColorLink="#007E1B1B"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
     <Button
         android:id="@+id/button3"
@@ -38,11 +39,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
+        android:layout_marginEnd="48dp"
         android:backgroundTint="#2B7523"
         android:onClick="startOrdinateur"
         android:text="Ordinateurs"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 
     <Button
@@ -52,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="128dp"
         android:backgroundTint="#2B7523"
+        android:onClick="delayedNotification"
         android:text="Notification"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,15 +64,21 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="128dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="128dp"
         android:backgroundTint="#2B7523"
-        android:text="Processeurs"
         android:onClick="startProcesseur"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        android:text="Processeurs"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.647" />
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="32dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_editor_absoluteX="1dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

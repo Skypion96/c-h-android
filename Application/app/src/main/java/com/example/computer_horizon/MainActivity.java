@@ -1,10 +1,15 @@
 package com.example.computer_horizon;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.computer_horizon.services.OrdinateurRepositoryService;
 
@@ -22,7 +27,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button btnNotification = findViewById(R.id.btnNotificationDelayed);
 
+        btnNotification.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                delayedNotification();
+            }
+        });
 
     }
     public void startConnexion(View view) {
@@ -40,5 +52,17 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void delayedNotification(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher_round)
+                .setContentTitle("Titre notification")
+                .setContentText("Texte de la notification");
 
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(contentIntent);
+
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(0, builder.build());
+    }
 }
