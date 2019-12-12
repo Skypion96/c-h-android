@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:text="Nos cartes graphique "
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/lv_ordis"
+        app:layout_constraintBottom_toTopOf="@+id/lv_cg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
