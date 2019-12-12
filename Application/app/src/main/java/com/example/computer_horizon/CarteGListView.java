@@ -10,10 +10,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.computer_horizon.models.OrdinateurAdapter;
+import com.example.computer_horizon.models.CarteG;
+import com.example.computer_horizon.models.CarteGAdapter;
 import com.example.computer_horizon.models.Processeur;
 import com.example.computer_horizon.models.ProcesseurAdapter;
-import com.example.computer_horizon.services.OrdinateurRepositoryService;
+import com.example.computer_horizon.services.CarteGraphiqueRepositoryService;
 import com.example.computer_horizon.services.ProcesseurRepositoryService;
 
 import java.io.Serializable;
@@ -23,20 +24,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ProcesseurListView extends AppCompatActivity implements AdapterView.OnItemClickListener, Serializable {
+public class CarteGListView extends AppCompatActivity implements AdapterView.OnItemClickListener, Serializable {
 
-    private ProcesseurAdapter adapter;
+    private CarteGAdapter adapter;
     private ListView mListView;
-    private List<Processeur> procs;
+    private List<CarteG> cartes;
     public static final String EXTRA_MAIN_ACTIVITY = "EXTRA_MAIN_ACTIVITY";
 
 
 
-    private void populateListView(List<Processeur> proc) {
-        mListView = findViewById(R.id.lv_proc);
-        adapter = new ProcesseurAdapter(this,R.id.lv_proc,proc);
+    private void populateListView(List<CarteG> carteG) {
+        mListView = findViewById(R.id.lv_cg);
+        adapter = new CarteGAdapter(this,R.id.lv_cg,carteG);
         mListView.setAdapter(adapter);
-        procs=proc;
+        cartes=carteG;
         mListView.setOnItemClickListener(this);
     }
 
@@ -46,17 +47,17 @@ public class ProcesseurListView extends AppCompatActivity implements AdapterView
         setContentView(R.layout.activity_processeur_list_view);
 
 
-        Call<List<Processeur>> call = ProcesseurRepositoryService.query();
-        call.enqueue(new Callback<List<Processeur>>() {
+        Call<List<CarteG>> call = CarteGraphiqueRepositoryService.query();
+        call.enqueue(new Callback<List<CarteG>>() {
 
             @Override
-            public void onResponse(Call<List<Processeur>> call, Response<List<Processeur>> response) {
+            public void onResponse(Call<List<CarteG>> call, Response<List<CarteG>> response) {
                 populateListView(response.body());
 
             }
             @Override
-            public void onFailure(Call<List<Processeur>> call, Throwable throwable) {
-                Toast.makeText(ProcesseurListView.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
+            public void onFailure(Call<List<CarteG>> call, Throwable throwable) {
+                Toast.makeText(CarteGListView.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -65,8 +66,8 @@ public class ProcesseurListView extends AppCompatActivity implements AdapterView
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
-        final Processeur bookmark = procs.get(i);
-        Intent intent = new Intent(ProcesseurListView.this, ProcesseurViewAll.class);
+        final CarteG bookmark = cartes.get(i);
+        Intent intent = new Intent(CarteGListView.this, CarteGViewAll.class);
         intent.putExtra(EXTRA_MAIN_ACTIVITY,bookmark);
         Log.i("ordi",bookmark.getMarque());
         startActivity(intent);

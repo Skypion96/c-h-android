@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProcesseurViewAll">
-
+    tools:context=".CarteGViewAll">
     <TextView
         android:id="@+id/nom"
         android:layout_width="wrap_content"
@@ -56,7 +55,7 @@
         app:layout_constraintVertical_bias="0.379" />
 
     <TextView
-        android:id="@+id/nbCoeurs"
+        android:id="@+id/memoireVideo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -80,7 +79,7 @@
         app:layout_constraintVertical_bias="0.292" />
 
     <TextView
-        android:id="@+id/frequenceProc"
+        android:id="@+id/frequencecg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -95,10 +94,10 @@
         android:id="@+id/textView24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nombre de coeurs :"
+        android:text="Mémoire vidéo :"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintHorizontal_bias="0.122"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.557" />
@@ -114,5 +113,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.292" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

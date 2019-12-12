@@ -52,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void startCarteGraphique(View view) {
+        Intent intent = new Intent(MainActivity.this, CarteGListView.class);
+        startActivity(intent);
+    }
+
     public void delayedNotification(){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher_round)

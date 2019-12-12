@@ -30,10 +30,10 @@ public class OrdinateurAll extends AppCompatActivity {
         nom = findViewById(R.id.nom);
         marque = findViewById(R.id.marque);
         prix = findViewById(R.id.prix);
-        processeur = findViewById(R.id.frequence);
-        carteG = findViewById(R.id.nbCoeurs);
+        processeur = findViewById(R.id.proc);
+        carteG = findViewById(R.id.carteG);
         capacite = findViewById(R.id.capacite);
-        memoireV = findViewById(R.id.memoireV);
+        memoireV = findViewById(R.id.memoireVOrdi);
         ssd = findViewById(R.id.ssd);
         description = findViewById(R.id.descr);
         capaciteSSD = findViewById(R.id.capSSD);

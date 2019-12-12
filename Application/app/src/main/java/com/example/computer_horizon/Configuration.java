@@ -6,5 +6,6 @@ public interface Configuration {
     String API_ORDINATEUR = "Ordinateur";
     String API_USERACCOUNT ="Utilisateur";
     String API_PROCESSEUR ="Processeur";
+    String API_CARTEG = "CarteGraphique";
 
 }

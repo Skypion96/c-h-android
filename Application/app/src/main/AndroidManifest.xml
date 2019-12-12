@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ProcesseurViewAll"></activity>
+        <activity android:name=".CarteGViewAll"></activity>
+        <activity android:name=".CarteGListView" />
+        <activity android:name=".ProcesseurViewAll" />
         <activity android:name=".ProcesseurListView" />
         <activity android:name=".OrdinateurAll" />
         <activity android:name=".Ordinateur" />
