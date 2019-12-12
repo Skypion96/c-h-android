@@ -57,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void startDisqueDur(View view) {
+        Intent intent = new Intent(MainActivity.this, DisqueDListView.class);
+        startActivity(intent);
+    }
+
     public void delayedNotification(){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
