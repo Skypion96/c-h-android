@@ -1,6 +1,7 @@
 package com.example.computer_horizon.services;
 
 import com.example.computer_horizon.Configuration;
+import com.example.computer_horizon.models.Authenticate;
 import com.example.computer_horizon.models.Ordinateur;
 import com.example.computer_horizon.models.UserConnected;
 import com.example.computer_horizon.models.Utilisateur;
@@ -45,7 +46,7 @@ public class UserRepositoryService {
                 .create(UserRepository.class);//TodoRepository instance
     }
 
-    public static UserConnected authenticate(String mail, String mdp){
-        return new UserConnected(ourInstance.authenticate(mail, mdp).getToken());
+    public Call<UserConnected> authenticate(String mail, String mdp){
+        return ourInstance.repository.authenticate(new Authenticate(mail, mdp));
     }
 }
