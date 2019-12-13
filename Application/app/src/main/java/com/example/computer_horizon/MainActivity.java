@@ -9,20 +9,19 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.computer_horizon.services.OrdinateurRepositoryService;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.http.HTTP;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button test = findViewById(R.id.test);
 
 
     }
@@ -92,5 +93,10 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-
+    public void test(View view){
+        SharedPreferences preferencesToken = getSharedPreferences("token", MODE_PRIVATE);
+        String token = preferencesToken.getString("token", null);
+        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT);
+        Log.i("test", token);
+    }
 }
