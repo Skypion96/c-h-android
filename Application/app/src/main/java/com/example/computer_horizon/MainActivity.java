@@ -3,11 +3,16 @@ package com.example.computer_horizon;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
+import android.app.AlarmManager;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -27,14 +32,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnNotification = findViewById(R.id.btnNotificationDelayed);
-
-        btnNotification.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                delayedNotification();
-            }
-        });
 
     }
     public void startConnexion(View view) {
@@ -62,18 +59,33 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void delayedNotification(){
+    public void delayedNotification(Context context, long delay, int notificationId){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
-                .setContentTitle("Titre notification")
-                .setContentText("Texte de la notification")
-                .setAutoCancel(true);
+                .setContentTitle("Oublié de passer la commande ?")
+                .setContentText("Il reste des articles dans votre panier. Commander ?")
+                .setAutoCancel(true)
+                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
 
         Intent notificationIntent = new Intent(this, MainActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(contentIntent);
 
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(0, builder.build());
+        Notification notification = builder.build();
+
+        Intent notifIntent = new Intent(context, MyNotificationPublisher.class);
+        notifIntent.putExtra(MyNotificationPublisher.NOTIFICATION_ID, notificationId);
+        notifIntent.putExtra(MyNotificationPublisher.NOTIFICATION, notification);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, notifIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+        long futureInMillis = SystemClock.elapsedRealtime() + delay;
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
+        Log.e("onReceive: ", "Test" );
+    }
+
+    public void doQuit(View view){
+        delayedNotification(getApplicationContext(), 5000, 0);
+        finish();
     }
 }
