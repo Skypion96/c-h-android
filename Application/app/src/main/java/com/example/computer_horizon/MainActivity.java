@@ -10,6 +10,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
@@ -20,6 +21,8 @@ import com.example.computer_horizon.services.OrdinateurRepositoryService;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.http.HTTP;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -88,4 +91,6 @@ public class MainActivity extends AppCompatActivity {
         delayedNotification(getApplicationContext(), 5000, 0);
         finish();
     }
+
+
 }
