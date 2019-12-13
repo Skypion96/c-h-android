@@ -1,11 +1,20 @@
 package com.example.computer_horizon.models;
 
-public class Utilisateur {
+import java.io.Serializable;
 
-    private String nomUtilisateur,prenomUtilisateur,mail,tel,mdp,rue,numRue,ville;
-    private int cp;
+public class Utilisateur implements Serializable {
 
-    public Utilisateur(String nomUtilisateur, String prenomUtilisateur, String mail, String mdp,String tel, String rue, String numRue, String ville, int cp) {
+   private String nomUtilisateur;
+   private String prenomUtilisateur;
+   private String mail;
+   private String mdp;
+   private String tel;
+   private String rue;
+   private String numRue;
+   private int cp;
+   private String ville;
+
+    public Utilisateur(String nomUtilisateur, String prenomUtilisateur, String mail, String mdp, String tel, String rue, String numRue, int cp, String ville) {
         this.nomUtilisateur = nomUtilisateur;
         this.prenomUtilisateur = prenomUtilisateur;
         this.mail = mail;
@@ -13,8 +22,8 @@ public class Utilisateur {
         this.tel = tel;
         this.rue = rue;
         this.numRue = numRue;
-        this.ville = ville;
         this.cp = cp;
+        this.ville = ville;
     }
 
     public String getNomUtilisateur() {
@@ -49,6 +58,14 @@ public class Utilisateur {
         this.mdp = mdp;
     }
 
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+
     public String getRue() {
         return rue;
     }
@@ -65,14 +82,6 @@ public class Utilisateur {
         this.numRue = numRue;
     }
 
-    public String getVille() {
-        return ville;
-    }
-
-    public void setVille(String ville) {
-        this.ville = ville;
-    }
-
     public int getCp() {
         return cp;
     }
@@ -81,12 +90,12 @@ public class Utilisateur {
         this.cp = cp;
     }
 
-    public String getTel() {
-        return tel;
+    public String getVille() {
+        return ville;
     }
 
-    public void setTel(String tel) {
-        this.tel = tel;
+    public void setVille(String ville) {
+        this.ville = ville;
     }
 
     @Override
@@ -96,10 +105,11 @@ public class Utilisateur {
                 ", prenomUtilisateur='" + prenomUtilisateur + '\'' +
                 ", mail='" + mail + '\'' +
                 ", mdp='" + mdp + '\'' +
+                ", tel='" + tel + '\'' +
                 ", rue='" + rue + '\'' +
                 ", numRue='" + numRue + '\'' +
-                ", ville='" + ville + '\'' +
                 ", cp=" + cp +
+                ", ville='" + ville + '\'' +
                 '}';
     }
 }

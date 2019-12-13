@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startUpdate(View view) {
-        Intent intent = new Intent(MainActivity.this, Modif_Profil.class);
+        Intent intent = new Intent(MainActivity.this, DisqueDListView.class);
         startActivity(intent);
     }
 

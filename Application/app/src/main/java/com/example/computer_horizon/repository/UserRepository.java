@@ -17,7 +17,7 @@ import retrofit2.http.Path;
 
 public interface UserRepository {
 
-    @GET(Configuration.API_USERACCOUNT)
+    @GET(Configuration.API_USERACCOUNT+"/all")
     Call<List<Utilisateur>> query();
     @POST(Configuration.API_USERACCOUNT)
     Call<Utilisateur> post(@Body Utilisateur todo);
