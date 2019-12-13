@@ -2,14 +2,15 @@ package com.example.computer_horizon.models;
 
 public class Utilisateur {
 
-    private String nomUtilisateur,prenomUtilisateur,mail,mdp,rue,numRue,ville;
+    private String nomUtilisateur,prenomUtilisateur,mail,tel,mdp,rue,numRue,ville;
     private int cp;
 
-    public Utilisateur(String nomUtilisateur, String prenomUtilisateur, String mail, String mdp, String rue, String numRue, String ville, int cp) {
+    public Utilisateur(String nomUtilisateur, String prenomUtilisateur, String mail, String mdp,String tel, String rue, String numRue, String ville, int cp) {
         this.nomUtilisateur = nomUtilisateur;
         this.prenomUtilisateur = prenomUtilisateur;
         this.mail = mail;
         this.mdp = mdp;
+        this.tel = tel;
         this.rue = rue;
         this.numRue = numRue;
         this.ville = ville;
@@ -78,6 +79,14 @@ public class Utilisateur {
 
     public void setCp(int cp) {
         this.cp = cp;
+    }
+
+    public String getTel() {
+        return tel;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 
     @Override

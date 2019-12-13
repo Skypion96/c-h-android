@@ -11,8 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Modif_Profil"></activity>
+
         <receiver android:name=".MyNotificationPublisher" />
-        <activity android:name=".DisqueDViewAll"></activity>
+
+        <activity android:name=".DisqueDViewAll" />
         <activity android:name=".DisqueDListView" />
         <activity android:name=".CarteGViewAll" />
         <activity android:name=".CarteGListView" />
@@ -29,8 +32,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
-
 
 </manifest>

@@ -63,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void startUpdate(View view) {
+        Intent intent = new Intent(MainActivity.this, Modif_Profil.class);
+        startActivity(intent);
+    }
+
     public void delayedNotification(Context context, long delay, int notificationId){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
