@@ -28,14 +28,14 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MAIN_ACTIVITY = "EXTRA_MAIN_ACTIVITY";
     private com.example.computer_horizon.models.Ordinateur o =new com.example.computer_horizon.models.Ordinateur("tt","tt",3.25,"tt","tt","55",5,false,"ttt",5,"tt","pppp",5.00);
 
-    Button panier = findViewById(R.id.panier);
+    Button panier ;
 
-    private List<com.example.computer_horizon.models.Ordinateur> ordis;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        panier =  findViewById(R.id.panier);
     }
     public void startConnexion(View view) {
         Intent intent = new Intent(MainActivity.this, Connexion.class);
@@ -98,7 +98,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void isConnected(View view){
-        String token = Connexion.getPreferencesToken().getString("token", null);
+        SharedPreferences preferencesToken = getSharedPreferences("token", MODE_PRIVATE);
+        String token = preferencesToken.getString("token", null);
         if(token != null){
             panier.setEnabled(true);
         }
