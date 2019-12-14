@@ -28,14 +28,13 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MAIN_ACTIVITY = "EXTRA_MAIN_ACTIVITY";
     private com.example.computer_horizon.models.Ordinateur o =new com.example.computer_horizon.models.Ordinateur("tt","tt",3.25,"tt","tt","55",5,false,"ttt",5,"tt","pppp",5.00);
 
+    Button panier = findViewById(R.id.panier);
+
     private List<com.example.computer_horizon.models.Ordinateur> ordis;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Button test = findViewById(R.id.test);
-
 
     }
     public void startConnexion(View view) {
@@ -98,10 +97,19 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    public void test(View view){
-        SharedPreferences preferencesToken = getSharedPreferences("token", MODE_PRIVATE);
-        String token = preferencesToken.getString("token", null);
-        Toast.makeText(MainActivity.this, token, Toast.LENGTH_SHORT);
-        Log.i("test", token);
+    public void isConnected(View view){
+        String token = Connexion.getPreferencesToken().getString("token", null);
+        if(token != null){
+            panier.setEnabled(true);
+        }
+        else {
+            panier.setEnabled(false);
+            panier.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(MainActivity.this, "You're not connected", Toast.LENGTH_SHORT);
+                }
+            });
+        }
     }
 }

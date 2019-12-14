@@ -22,6 +22,7 @@ public class Connexion extends AppCompatActivity {
     EditText mailText;
     EditText mdpText;
     boolean success = false;
+    SharedPreferences preferencesToken = getSharedPreferences("token", MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,6 @@ public class Connexion extends AppCompatActivity {
                     String token = response.body().getToken();
                     Toast.makeText(Connexion.this, response.body().getToken(), Toast.LENGTH_SHORT).show();
 
-                    SharedPreferences preferencesToken = getSharedPreferences("token", MODE_PRIVATE);
                     preferencesToken.edit().putString("token", token).apply();
 
                     Intent navigate = new Intent(Connexion.this, MainActivity.class);
@@ -67,5 +67,9 @@ public class Connexion extends AppCompatActivity {
                 mdpText.setText("");
             }
         });
+    }
+
+    public static SharedPreferences getPreferencesToken() {
+        return preferencesToken;
     }
 }
