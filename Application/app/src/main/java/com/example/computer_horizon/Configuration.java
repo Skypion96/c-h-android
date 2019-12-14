@@ -9,5 +9,9 @@ public interface Configuration {
     String API_PROCESSEUR ="Processeur";
     String API_CARTEG = "CarteGraphique";
     String API_DISQUED="DisqueDur";
+    String API_PANIERCG="PanierCarteGraphique";
+    String API_PANIERDD="PanierDisqueDur";
+    String API_PANIERORDI="PanierOrdinateur";
+    String API_PANIERPROC="PanierProcesseur";
 
 }

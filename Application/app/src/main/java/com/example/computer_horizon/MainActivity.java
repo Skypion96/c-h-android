@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
                 .setContentTitle("Oublié de passer la commande ?")
-                .setContentText("Il reste des articles dans votre panier. Commander ?")
+                .setContentText("Il reste des articles dans votre Panier. Commander ?")
                 .setAutoCancel(true)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
 

@@ -1,13 +1,13 @@
 package com.example.computer_horizon.models;
 
-public class panier_processeur {
+public class Panier {
 
     private int id;
-    private String nom;
+    private String mail;
 
-    public panier_processeur(int id, String nom) {
+    public Panier(int id, String mail) {
         this.id = id;
-        this.nom = nom;
+        this.mail = mail;
     }
 
     public int getId() {
@@ -18,19 +18,19 @@ public class panier_processeur {
         this.id = id;
     }
 
-    public String getNom() {
-        return nom;
+    public String getMail() {
+        return mail;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     @Override
     public String toString() {
-        return "panier_processeur{" +
+        return "Panier{" +
                 "id=" + id +
-                ", nom='" + nom + '\'' +
+                ", mail='" + mail + '\'' +
                 '}';
     }
 }
