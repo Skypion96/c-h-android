@@ -102,6 +102,13 @@ public class MainActivity extends AppCompatActivity {
         String token = preferencesToken.getString("token", null);
         if(token != null){
             panier.setEnabled(true);
+            panier.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(MainActivity.this, Panier.class);
+                    startActivity(intent);
+                }
+            });
         }
         else {
             panier.setEnabled(false);
@@ -113,4 +120,6 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+
+
 }

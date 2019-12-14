@@ -54,7 +54,7 @@ public class Connexion extends AppCompatActivity {
                     String token = response.body().getToken();
                     Toast.makeText(Connexion.this, response.body().getToken(), Toast.LENGTH_SHORT).show();
 
-                    preferencesToken.edit().putString("token", token).apply();
+                    preferencesToken.edit().putString("token", token).commit();
 
                     Intent navigate = new Intent(Connexion.this, MainActivity.class);
                     startActivity(navigate);
