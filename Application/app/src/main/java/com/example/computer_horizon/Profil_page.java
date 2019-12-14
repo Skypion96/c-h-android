@@ -53,4 +53,20 @@ public class Profil_page extends AppCompatActivity {
         Intent intent = new Intent(Profil_page.this, Modif_Profil.class);
         startActivity(intent);
     }
+
+    public void startDelete(View view){
+        Intent intent = new Intent(Profil_page.this, MainActivity.class);
+        startActivity(intent);
+        UserRepositoryService.delete("ddd").enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+    }
 }

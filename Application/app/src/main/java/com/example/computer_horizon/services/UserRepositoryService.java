@@ -35,6 +35,11 @@ public class UserRepositoryService {
         return ourInstance.repository.post(user);
     }
 
+    public static Call<Void> delete(String nom){
+        return ourInstance.repository.delete(nom);
+    }
+
+
     public static Call<Void> put(Utilisateur user){
         return ourInstance.repository.put(user);
     }
