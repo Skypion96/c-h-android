@@ -2,20 +2,14 @@ package com.example.computer_horizon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.computer_horizon.models.DisqueD;
-import com.example.computer_horizon.models.DisqueDAdapter;
-import com.example.computer_horizon.models.Panier_processeur;
+import com.example.computer_horizon.models.PanierProcesseur;
 import com.example.computer_horizon.models.Processeur;
 import com.example.computer_horizon.models.ProcesseurAdapter;
-import com.example.computer_horizon.services.DisqueDRepositoryService;
 import com.example.computer_horizon.services.PanierProcesseurRepositoryService;
 import com.example.computer_horizon.services.ProcesseurRepositoryService;
 
@@ -31,7 +25,7 @@ public class PanierProcList extends AppCompatActivity implements Serializable {
 
     private ProcesseurAdapter adapter;
     private ListView mListView;
-    private List<Panier_processeur> panier;
+    private List<PanierProcesseur> panier;
     private List<Processeur> procs;
     public static final String EXTRA_MAIN_ACTIVITY = "EXTRA_MAIN_ACTIVITY";
 
@@ -39,13 +33,14 @@ public class PanierProcList extends AppCompatActivity implements Serializable {
 
     private void populateListView(List<Processeur> proc) {
         mListView = findViewById(R.id.lv_proc_pan);
-        /*for(int i =0;i<proc.size();i++){
-            if(proc.get(i).getNom()==panier.get(i).getNom()){
-                procs.add(proc.get(i));
-                Log.i("test",procs.get(i).getMarque());
+        for(int i =0;i<proc.size();i++){
+            for(int j=0;j<panier.size();j++){
+                if(proc.get(i).getNom().equals(panier.get(j).getNom())){
+                    procs.add(proc.get(i));
+                }
             }
-        }*/
-        adapter = new ProcesseurAdapter(this,R.id.lv_proc_pan,proc);
+        }
+        adapter = new ProcesseurAdapter(this,R.id.lv_proc_pan,procs);
         mListView.setAdapter(adapter);
     }
 
@@ -55,15 +50,15 @@ public class PanierProcList extends AppCompatActivity implements Serializable {
         setContentView(R.layout.activity_panier_proc_list);
         procs = new ArrayList<>();
 
-        Call<List<Panier_processeur>> call = PanierProcesseurRepositoryService.query();
-        call.enqueue(new Callback<List<Panier_processeur>>() {
+        Call<List<PanierProcesseur>> call = PanierProcesseurRepositoryService.query();
+        call.enqueue(new Callback<List<PanierProcesseur>>() {
 
             @Override
-            public void onResponse(Call<List<Panier_processeur>> call, Response<List<Panier_processeur>> response) {
+            public void onResponse(Call<List<PanierProcesseur>> call, Response<List<PanierProcesseur>> response) {
                 panier = response.body();
             }
             @Override
-            public void onFailure(Call<List<Panier_processeur>> call, Throwable throwable) {
+            public void onFailure(Call<List<PanierProcesseur>> call, Throwable throwable) {
                 Toast.makeText(PanierProcList.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
         });

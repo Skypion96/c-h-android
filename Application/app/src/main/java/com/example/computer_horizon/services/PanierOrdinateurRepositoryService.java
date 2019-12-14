@@ -1,9 +1,7 @@
 package com.example.computer_horizon.services;
 
 import com.example.computer_horizon.Configuration;
-import com.example.computer_horizon.models.Panier_Ordinateur;
-import com.example.computer_horizon.models.Panier_carteGraphique;
-import com.example.computer_horizon.repository.PanierCarteGraphiqueRepository;
+import com.example.computer_horizon.models.PanierOrdinateur;
 import com.example.computer_horizon.repository.PanierOrdinateurRepository;
 
 import java.util.List;
@@ -24,11 +22,11 @@ public class PanierOrdinateurRepositoryService {
         init();
     }
 
-    public static Call<List<Panier_Ordinateur>> query(){
+    public static Call<List<PanierOrdinateur>> query(){
         return ourInstance.repository.query();
     }
 
-    public static Call<Panier_Ordinateur> post(Panier_Ordinateur dd){
+    public static Call<PanierOrdinateur> post(PanierOrdinateur dd){
         return ourInstance.repository.post(dd);
     }
 
@@ -36,7 +34,7 @@ public class PanierOrdinateurRepositoryService {
         return ourInstance.repository.delete(nom);
     }
 
-    public static Call<Void> put(Panier_Ordinateur dd){
+    public static Call<Void> put(PanierOrdinateur dd){
         return ourInstance.repository.put(dd);
     }
     private void init(){

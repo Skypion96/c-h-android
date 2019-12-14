@@ -1,11 +1,11 @@
 package com.example.computer_horizon.models;
 
-public class Panier_Ordinateur {
+public class PanierProcesseur {
 
     private int id;
     private String nom;
 
-    public Panier_Ordinateur(int id, String nom) {
+    public PanierProcesseur(int id, String nom) {
         this.id = id;
         this.nom = nom;
     }
@@ -28,7 +28,7 @@ public class Panier_Ordinateur {
 
     @Override
     public String toString() {
-        return "Panier_Ordinateur{" +
+        return "PanierProcesseur{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 '}';

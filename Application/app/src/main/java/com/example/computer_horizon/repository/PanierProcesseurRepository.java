@@ -1,8 +1,7 @@
 package com.example.computer_horizon.repository;
 
 import com.example.computer_horizon.Configuration;
-import com.example.computer_horizon.models.DisqueD;
-import com.example.computer_horizon.models.Panier_processeur;
+import com.example.computer_horizon.models.PanierProcesseur;
 
 import java.util.List;
 
@@ -17,11 +16,11 @@ import retrofit2.http.Path;
 public interface PanierProcesseurRepository {
 
     @GET(Configuration.API_PANIERPROC)
-    Call<List<Panier_processeur>> query();
+    Call<List<PanierProcesseur>> query();
     @POST(Configuration.API_PANIERPROC)
-    Call<Panier_processeur> post(@Body Panier_processeur todo);
+    Call<PanierProcesseur> post(@Body PanierProcesseur todo);
     @DELETE(Configuration.API_PANIERPROC +"/{nom}")
     Call<Void> delete(@Path("nom")String nom);
     @PUT(Configuration.API_PANIERPROC)
-    Call<Void> put(@Body Panier_processeur todo);
+    Call<Void> put(@Body PanierProcesseur todo);
 }

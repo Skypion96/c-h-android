@@ -1,8 +1,7 @@
 package com.example.computer_horizon.repository;
 
 import com.example.computer_horizon.Configuration;
-import com.example.computer_horizon.models.DisqueD;
-import com.example.computer_horizon.models.Panier_disqueDur;
+import com.example.computer_horizon.models.PanierDisqueDur;
 
 import java.util.List;
 
@@ -17,11 +16,11 @@ import retrofit2.http.Path;
 public interface PanierDisqueDurRepository {
 
     @GET(Configuration.API_PANIERDD)
-    Call<List<Panier_disqueDur>> query();
+    Call<List<PanierDisqueDur>> query();
     @POST(Configuration.API_PANIERDD)
-    Call<Panier_disqueDur> post(@Body Panier_disqueDur todo);
+    Call<PanierDisqueDur> post(@Body PanierDisqueDur todo);
     @DELETE(Configuration.API_PANIERDD +"/{nom}")
     Call<Void> delete(@Path("nom")String nom);
     @PUT(Configuration.API_PANIERDD)
-    Call<Void> put(@Body Panier_disqueDur todo);
+    Call<Void> put(@Body PanierDisqueDur todo);
 }
