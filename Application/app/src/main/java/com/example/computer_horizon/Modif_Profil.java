@@ -2,12 +2,14 @@ package com.example.computer_horizon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.auth0.android.jwt.JWT;
 import com.example.computer_horizon.models.CarteG;
 import com.example.computer_horizon.models.Utilisateur;
 import com.example.computer_horizon.services.CarteGraphiqueRepositoryService;
@@ -32,11 +34,14 @@ public class Modif_Profil extends AppCompatActivity {
     EditText etMail;
     String value4 ;
     List<Utilisateur> users ;
+    SharedPreferences preferencesToken;
+    JWT jwt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modif__profil);
-
+        preferencesToken = getSharedPreferences("token", MODE_PRIVATE);
+        jwt = new JWT(preferencesToken.getString("token",null));
         eTNom = findViewById(R.id.eTNom);
         eTPrenom = findViewById(R.id.eTPrenom);
         eTTel = findViewById(R.id.eTTel);
@@ -91,5 +96,7 @@ public class Modif_Profil extends AppCompatActivity {
             }
         });
     }
+
+
 
 }
