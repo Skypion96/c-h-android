@@ -63,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void startUpdate(View view) {
-        Intent intent = new Intent(MainActivity.this, DisqueDListView.class);
+    public void startInscription(View view) {
+        Intent intent = new Intent(MainActivity.this, Inscription.class);
         startActivity(intent);
     }
 

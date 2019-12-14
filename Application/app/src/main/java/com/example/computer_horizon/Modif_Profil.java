@@ -44,8 +44,6 @@ public class Modif_Profil extends AppCompatActivity {
         eTNumero = findViewById(R.id.eTNum);
         eTCP = findViewById(R.id.eTCP);
         eTVille = findViewById(R.id.eTVille);
-        etMDP = findViewById(R.id.etMDP);
-        etMail = findViewById(R.id.etMail);
 
         Call<List<Utilisateur>> call = UserRepositoryService.query();
         call.enqueue(new Callback<List<Utilisateur>>() {
