@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
@@ -121,5 +122,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    public void doContact(View view){
+        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto","la179682@student.helha.be", null));
+        startActivity(Intent.createChooser(intent, "Envoyer via"));
+    }
 }
