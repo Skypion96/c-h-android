@@ -13,5 +13,6 @@ public interface Configuration {
     String API_PANIERDD="PanierDisqueDur";
     String API_PANIERORDI="PanierOrdinateur";
     String API_PANIERPROC="PanierProcesseur";
+    String API_PANIER = "Panier";
 
 }

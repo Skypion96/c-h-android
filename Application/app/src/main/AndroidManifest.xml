@@ -15,7 +15,6 @@
         <activity android:name=".PanierCarteGList" />
         <activity android:name=".PanierOrdiList" />
         <activity android:name=".PanierProcList" />
-        <activity android:name=".Panier" />
         <activity android:name=".Inscription" />
         <activity android:name=".Modif_Profil" />
 

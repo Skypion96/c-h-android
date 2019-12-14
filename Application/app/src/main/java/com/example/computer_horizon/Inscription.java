@@ -7,7 +7,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.computer_horizon.models.Panier;
 import com.example.computer_horizon.models.Utilisateur;
+import com.example.computer_horizon.services.PanierRepositoryService;
 import com.example.computer_horizon.services.UserRepositoryService;
 
 import java.util.List;
@@ -28,6 +30,7 @@ public class Inscription extends AppCompatActivity {
     EditText etMDP_ins;
     EditText etMail_ins;
     String value4 ;
+    Panier p;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +74,18 @@ public class Inscription extends AppCompatActivity {
             }
         });
 
+        p = new Panier(0,etMail_ins.getText().toString());
+        PanierRepositoryService.post(p).enqueue(new Callback<Panier>() {
+            @Override
+            public void onResponse(Call<Panier> call, Response<Panier> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<Panier> call, Throwable t) {
+
+            }
+        });
         eTNom_ins.setText("");
         eTPrenom_ins.setText("");
         eTTel_ins.setText("");
@@ -80,6 +95,8 @@ public class Inscription extends AppCompatActivity {
         eTVille_ins.setText("");
         etMDP_ins.setText("");
         etMail_ins.setText("");
+
+
 
     }
 }
