@@ -31,7 +31,7 @@ public class Inscription extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modif__profil);
+        setContentView(R.layout.activity_inscription);
 
         eTNom_ins = findViewById(R.id.eTNom_ins);
         eTPrenom_ins = findViewById(R.id.eTPrenom_ins);
@@ -70,5 +70,16 @@ public class Inscription extends AppCompatActivity {
 
             }
         });
+
+        eTNom_ins.setText("");
+        eTPrenom_ins.setText("");
+        eTTel_ins.setText("");
+        eTRue_ins.setText("");
+        eTNumero_ins.setText("");
+        eTCP_ins.setText("");
+        eTVille_ins.setText("");
+        etMDP_ins.setText("");
+        etMail_ins.setText("");
+
     }
 }
