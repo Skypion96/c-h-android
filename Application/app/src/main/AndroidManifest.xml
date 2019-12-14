@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Panier"></activity>
+        <activity android:name=".PanierProcList"></activity>
+        <activity android:name=".Panier" />
         <activity android:name=".Inscription" />
         <activity android:name=".Modif_Profil" />
 
