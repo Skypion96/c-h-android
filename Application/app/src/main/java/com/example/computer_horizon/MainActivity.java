@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startInscription(View view) {
-        Intent intent = new Intent(MainActivity.this, PanierProcList.class);
+        Intent intent = new Intent(MainActivity.this, Inscription.class);
         startActivity(intent);
     }
 
