@@ -64,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
         btnIncription = findViewById(R.id.button8);
         isConnected();
     }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        if(isConnected()){
+            delayedNotification(getApplicationContext(), 5000, 0);
+        }
+    }
     public void startConnexion(View view) {
         SharedPreferences preferencesToken = getSharedPreferences("token", MODE_PRIVATE);
         String token = preferencesToken.getString("token", null);
@@ -140,9 +148,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void doQuit(View view){
-        if(isConnected()){
-            delayedNotification(getApplicationContext(), 5000, 0);
-        }
         finish();
     }
 
