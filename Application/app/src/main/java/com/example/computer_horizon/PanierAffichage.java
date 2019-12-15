@@ -80,8 +80,10 @@ public class PanierAffichage extends AppCompatActivity {
 
             @Override
             public void onFinished() {
+                NumberFormat nm = NumberFormat.getNumberInstance();
                 suppressionArticlesPanier();
                 panierOK.setText("Paiement éffectué ! Merci de votre achat.");
+                totalPrix.setText(nm.format(0.00));
             }
         }).execute(30);
     }
