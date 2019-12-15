@@ -164,15 +164,4 @@
         app:layout_constraintBottom_toTopOf="@+id/btnQuit"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/button12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Test"
-        android:onClick="JWTDecode"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnContact" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -36,6 +36,7 @@ import com.example.computer_horizon.services.PanierProcesseurRepositoryService;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.jsonwebtoken.Jwts;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -179,4 +180,5 @@ public class MainActivity extends AppCompatActivity {
                 "mailto","la179682@student.helha.be", null));
         startActivity(Intent.createChooser(intent, "Envoyer via"));
     }
+
 }
