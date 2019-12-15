@@ -115,8 +115,8 @@ public class MainActivity extends AppCompatActivity {
     public void delayedNotification(Context context, long delay, int notificationId){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
-                .setContentTitle("Oublié de passer la commande ?")
-                .setContentText("Il reste des articles dans votre Panier. Commander ?")
+                .setContentTitle("Oublié de vous déconnecter ?")
+                .setContentText("Pensez à revenir vous déconnecter !")
                 .setAutoCancel(true)
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                 .setPriority(Notification.PRIORITY_MAX)
@@ -140,64 +140,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void doQuit(View view){
-        boolean panierVide = true;
-
-        Call<List<PanierCarteGraphique>> callCG = PanierCarteGraphiqueRepositoryService.query();
-        callCG.enqueue(new Callback<List<PanierCarteGraphique>>() {
-
-            @Override
-            public void onResponse(Call<List<PanierCarteGraphique>> callCG, Response<List<PanierCarteGraphique>> response) {
-                panierCg = response.body();
-            }
-            @Override
-            public void onFailure(Call<List<PanierCarteGraphique>> callCG, Throwable throwable) {
-            }
-        });
-
-        Call<List<PanierDisqueDur>> callDD = PanierDisqueDurRepositoryService.query();
-        callDD.enqueue(new Callback<List<PanierDisqueDur>>() {
-            @Override
-            public void onResponse(Call<List<PanierDisqueDur>> callDD, Response<List<PanierDisqueDur>> response) {
-                panierDD = response.body();
-            }
-            @Override
-            public void onFailure(Call<List<PanierDisqueDur>> callDD, Throwable throwable) {
-            }
-        });
-
-        Call<List<PanierOrdinateur>> callOrdi = PanierOrdinateurRepositoryService.query();
-        callOrdi.enqueue(new Callback<List<PanierOrdinateur>>() {
-            @Override
-            public void onResponse(Call<List<PanierOrdinateur>> callOrdi, Response<List<PanierOrdinateur>> response) {
-                panierOrdi = response.body();
-            }
-            @Override
-            public void onFailure(Call<List<PanierOrdinateur>> callOrdi, Throwable throwable) {
-            }
-        });
-
-        Call<List<PanierProcesseur>> callProc = PanierProcesseurRepositoryService.query();
-        callProc.enqueue(new Callback<List<PanierProcesseur>>() {
-            @Override
-            public void onResponse(Call<List<PanierProcesseur>> callProc, Response<List<PanierProcesseur>> response) {
-                panierProc = response.body();
-            }
-            @Override
-            public void onFailure(Call<List<PanierProcesseur>> callProc, Throwable throwable) {
-            }
-        });
-
-        if(panierCg.size() == 0 && panierDD.size() == 0 && panierOrdi.size() == 0 && panierProc.size() == 0){
-            panierVide = false;
-        }
-
-        if(!panierVide){
+        if(isConnected()){
             delayedNotification(getApplicationContext(), 5000, 0);
         }
         finish();
     }
 
-    public void isConnected(){
+    public boolean isConnected(){
         SharedPreferences preferencesToken = getSharedPreferences("token", MODE_PRIVATE);
         String token = preferencesToken.getString("token", null);
         if(token != null){
@@ -208,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
             btnConnexion.setText("Déconnexion");
             btnIncription.setEnabled(false);
             btnIncription.setVisibility(View.INVISIBLE);
+            return true;
         }
         else {
             panier.setEnabled(false);
@@ -217,6 +167,7 @@ public class MainActivity extends AppCompatActivity {
             btnConnexion.setText("Connexion");
             btnIncription.setEnabled(true);
             btnIncription.setVisibility(View.VISIBLE);
+            return false;
         }
 
 
