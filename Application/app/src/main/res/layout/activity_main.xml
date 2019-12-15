@@ -13,7 +13,7 @@
         android:layout_height="43dp"
         android:layout_marginTop="16dp"
         android:backgroundTint="#0059FF"
-        android:onClick="isConnected"
+        android:onClick="startPanier"
         android:text="Panier"
         android:textColorLink="#007E1B1B"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,6 +54,7 @@
         android:layout_marginBottom="32dp"
         android:backgroundTint="#0059FF"
         android:text="Profil"
+        android:onClick="startProfil"
         android:textColorLink="#007E1B1B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private com.example.computer_horizon.models.Ordinateur o =new com.example.computer_horizon.models.Ordinateur("tt","tt",3.25,"tt","tt","55",5,false,"ttt",5,"tt","pppp",5.00);
 
     Button panier ;
+    Button btnProfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         panier =  findViewById(R.id.panier);
+        btnProfil = findViewById(R.id.btnProfil);
+        isConnected();
     }
     public void startConnexion(View view) {
         Intent intent = new Intent(MainActivity.this, Connexion.class);
@@ -64,6 +67,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startInscription(View view) {
+        Intent intent = new Intent(MainActivity.this, Inscription.class);
+        startActivity(intent);
+    }
+
+    public void startPanier(View view){
+        Intent intent = new Intent(MainActivity.this, PanierAffichage.class);
+        startActivity(intent);
+    }
+
+    public void startProfil(View view){
         Intent intent = new Intent(MainActivity.this, Profil_page.class);
         startActivity(intent);
     }
@@ -98,28 +111,20 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    public void isConnected(View view){
+    public void isConnected(){
         SharedPreferences preferencesToken = getSharedPreferences("token", MODE_PRIVATE);
         String token = preferencesToken.getString("token", null);
         if(token != null){
             panier.setEnabled(true);
-            panier.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(MainActivity.this, PanierAffichage.class);
-                    startActivity(intent);
-                }
-            });
+            btnProfil.setEnabled(true);
+
         }
         else {
             panier.setEnabled(false);
-            panier.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(MainActivity.this, "You're not connected", Toast.LENGTH_SHORT);
-                }
-            });
+            btnProfil.setEnabled(false);
         }
+
+
     }
 
     public void doContact(View view){

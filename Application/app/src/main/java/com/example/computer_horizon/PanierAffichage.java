@@ -60,7 +60,7 @@ public class PanierAffichage extends AppCompatActivity {
     }
 
     private void launchBigTask() {
-        progressBar.setMax(49);
+        progressBar.setMax(29);
 
         new AsyncFillProgressBar(new AsyncFillProgressBar.CallBack() {
             @Override
@@ -73,7 +73,7 @@ public class PanierAffichage extends AppCompatActivity {
                 suppressionArticlesPanier();
                 panierOK.setText("Paiement éffectué ! Merci de votre achat.");
             }
-        }).execute(50);
+        }).execute(30);
     }
 
     public void displayToast(View view) {
