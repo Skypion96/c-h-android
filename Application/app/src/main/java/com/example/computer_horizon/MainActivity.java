@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy(){
         super.onDestroy();
         if(isConnected()){
-            delayedNotification(getApplicationContext(), 5000, 0);
+            delayedNotification(getApplicationContext(), 100, 0);
         }
     }
     public void startConnexion(View view) {
@@ -142,10 +142,6 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
         Log.e("onReceive: ", "Test" );
-    }
-
-    public void doQuit(View view){
-        finish();
     }
 
     public boolean isConnected(){
