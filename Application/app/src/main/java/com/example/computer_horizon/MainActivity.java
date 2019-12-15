@@ -118,12 +118,16 @@ public class MainActivity extends AppCompatActivity {
         String token = preferencesToken.getString("token", null);
         if(token != null){
             panier.setEnabled(true);
+            panier.setVisibility(View.VISIBLE);
             btnProfil.setEnabled(true);
+            btnProfil.setVisibility(View.VISIBLE);
             btnConnexion.setText("Déconnexion");
         }
         else {
             panier.setEnabled(false);
+            panier.setVisibility(View.INVISIBLE);
             btnProfil.setEnabled(false);
+            btnProfil.setVisibility(View.INVISIBLE);
             btnConnexion.setText("Connexion");
         }
 
