@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     Button panier ;
     Button btnProfil;
     Button btnConnexion;
+    Button btnIncription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +42,20 @@ public class MainActivity extends AppCompatActivity {
         panier =  findViewById(R.id.panier);
         btnProfil = findViewById(R.id.btnProfil);
         btnConnexion = findViewById(R.id.btnConnexion);
+        btnIncription = findViewById(R.id.button8);
         isConnected();
     }
     public void startConnexion(View view) {
-        Intent intent = new Intent(MainActivity.this, Connexion.class);
-        startActivity(intent);
+        SharedPreferences preferencesToken = getSharedPreferences("token", MODE_PRIVATE);
+        String token = preferencesToken.getString("token", null);
+        if(token != null){
+            preferencesToken.edit().clear().commit();
+            isConnected();
+        }
+        else{
+            Intent intent = new Intent(MainActivity.this, Connexion.class);
+            startActivity(intent);
+        }
     }
 
     public void startOrdinateur(View view) {
@@ -122,6 +132,8 @@ public class MainActivity extends AppCompatActivity {
             btnProfil.setEnabled(true);
             btnProfil.setVisibility(View.VISIBLE);
             btnConnexion.setText("Déconnexion");
+            btnIncription.setEnabled(false);
+            btnIncription.setVisibility(View.INVISIBLE);
         }
         else {
             panier.setEnabled(false);
@@ -129,6 +141,8 @@ public class MainActivity extends AppCompatActivity {
             btnProfil.setEnabled(false);
             btnProfil.setVisibility(View.INVISIBLE);
             btnConnexion.setText("Connexion");
+            btnIncription.setEnabled(true);
+            btnIncription.setVisibility(View.VISIBLE);
         }
 
 
