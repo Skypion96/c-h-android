@@ -63,10 +63,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop(){
-        super.onStop();
+    protected void onDestroy(){
+        super.onDestroy();
         if(isConnected()){
-            //delayedNotification(getApplicationContext(), 5000, 0);
+            delayedNotification(getApplicationContext(), 5000, 0);
         }
     }
     public void startConnexion(View view) {
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /*public void delayedNotification(Context context, long delay, int notificationId){
+    public void delayedNotification(Context context, long delay, int notificationId){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
                 .setContentTitle("Oublié de vous déconnecter ?")
@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
         Log.e("onReceive: ", "Test" );
-    }*/
+    }
 
     public void doQuit(View view){
         finish();
