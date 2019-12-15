@@ -1,10 +1,12 @@
 package com.example.computer_horizon;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
 import android.app.AlarmManager;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -12,6 +14,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     Button panier ;
     Button btnProfil;
     Button btnConnexion;
+    Button btnIncription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +45,20 @@ public class MainActivity extends AppCompatActivity {
         panier =  findViewById(R.id.panier);
         btnProfil = findViewById(R.id.btnProfil);
         btnConnexion = findViewById(R.id.btnConnexion);
+        btnIncription = findViewById(R.id.button8);
         isConnected();
     }
     public void startConnexion(View view) {
-        Intent intent = new Intent(MainActivity.this, Connexion.class);
-        startActivity(intent);
+        SharedPreferences preferencesToken = getSharedPreferences("token", MODE_PRIVATE);
+        String token = preferencesToken.getString("token", null);
+        if(token != null){
+            preferencesToken.edit().clear().commit();
+            isConnected();
+        }
+        else{
+            Intent intent = new Intent(MainActivity.this, Connexion.class);
+            startActivity(intent);
+        }
     }
 
     public void startOrdinateur(View view) {
@@ -84,12 +97,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void delayedNotification(Context context, long delay, int notificationId){
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(MainActivity.this)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
                 .setContentTitle("Oublié de passer la commande ?")
                 .setContentText("Il reste des articles dans votre Panier. Commander ?")
                 .setAutoCancel(true)
-                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
+                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                .setPriority(Notification.PRIORITY_MAX)
+                .setChannelId("channel_1");
 
         Intent notificationIntent = new Intent(this, MainActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -122,6 +137,8 @@ public class MainActivity extends AppCompatActivity {
             btnProfil.setEnabled(true);
             btnProfil.setVisibility(View.VISIBLE);
             btnConnexion.setText("Déconnexion");
+            btnIncription.setEnabled(false);
+            btnIncription.setVisibility(View.INVISIBLE);
         }
         else {
             panier.setEnabled(false);
@@ -129,6 +146,8 @@ public class MainActivity extends AppCompatActivity {
             btnProfil.setEnabled(false);
             btnProfil.setVisibility(View.INVISIBLE);
             btnConnexion.setText("Connexion");
+            btnIncription.setEnabled(true);
+            btnIncription.setVisibility(View.VISIBLE);
         }
 
 
