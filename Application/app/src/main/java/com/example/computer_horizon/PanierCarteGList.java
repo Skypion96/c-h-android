@@ -2,7 +2,11 @@ package com.example.computer_horizon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,7 +29,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PanierCarteGList extends AppCompatActivity implements Serializable {
+public class PanierCarteGList extends AppCompatActivity implements AdapterView.OnItemClickListener,Serializable {
 
     private CarteGAdapter adapter;
     private ListView mListView;
@@ -46,6 +50,7 @@ public class PanierCarteGList extends AppCompatActivity implements Serializable 
         }
         adapter = new CarteGAdapter(this,R.id.lv_carteG_pan,cartes);
         mListView.setAdapter(adapter);
+        mListView.setOnItemClickListener(this);
     }
 
     @Override
@@ -82,14 +87,15 @@ public class PanierCarteGList extends AppCompatActivity implements Serializable 
     }
 
 
-    /*@Override
-    public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
-        final DisqueD bookmark = disques.get(i);
-        Intent intent = new Intent(PanierProcList.this, DisqueDViewAll.class);
+
+
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        final CarteG bookmark = cartes.get(i);
+        Log.i("test",cartes.get(i).toString());
+        Intent intent = new Intent(PanierCarteGList.this, PanierCGAll.class);
         intent.putExtra(EXTRA_MAIN_ACTIVITY,bookmark);
         startActivity(intent);
-    }*/
-
-
-
+    }
 }

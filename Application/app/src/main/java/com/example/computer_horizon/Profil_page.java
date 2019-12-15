@@ -70,4 +70,9 @@ public class Profil_page extends AppCompatActivity {
         });*/
 
     }
+
+    public void retourAccueil(View view){
+        Intent intent = new Intent(Profil_page.this, MainActivity.class);
+        startActivity(intent);
+    }
 }

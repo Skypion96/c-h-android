@@ -2,8 +2,11 @@ package com.example.computer_horizon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,7 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PanierProcList extends AppCompatActivity implements Serializable {
+public class PanierProcList extends AppCompatActivity implements AdapterView.OnItemClickListener,Serializable {
 
     private ProcesseurAdapter adapter;
     private ListView mListView;
@@ -42,6 +45,7 @@ public class PanierProcList extends AppCompatActivity implements Serializable {
         }
         adapter = new ProcesseurAdapter(this,R.id.lv_proc_pan,procs);
         mListView.setAdapter(adapter);
+        mListView.setOnItemClickListener(this);
     }
 
     @Override
@@ -77,15 +81,12 @@ public class PanierProcList extends AppCompatActivity implements Serializable {
 
     }
 
-
-    /*@Override
-    public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
-        final DisqueD bookmark = disques.get(i);
-        Intent intent = new Intent(PanierProcList.this, DisqueDViewAll.class);
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        final Processeur bookmark = procs.get(i);
+        Intent intent = new Intent(PanierProcList.this, PanierProcAll.class);
         intent.putExtra(EXTRA_MAIN_ACTIVITY,bookmark);
         startActivity(intent);
-    }*/
-
-
+    }
 
 }

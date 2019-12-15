@@ -81,7 +81,7 @@ public class PanierAffichage extends AppCompatActivity {
 
         launchBigTask();
         progressBar.setVisibility(View.VISIBLE);
-        panierOK.setText("Paiement en cour ...");
+        panierOK.setText("Paiement en cours ...");
 
     }
 
@@ -267,5 +267,9 @@ public class PanierAffichage extends AppCompatActivity {
         }
     }
 
+    public void retourAccueil(View view){
+        Intent intent = new Intent(PanierAffichage.this, MainActivity.class);
+        startActivity(intent);
+    }
 
 }

@@ -2,7 +2,10 @@ package com.example.computer_horizon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,7 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PanierDisqueDurList extends AppCompatActivity implements Serializable {
+public class PanierDisqueDurList extends AppCompatActivity implements AdapterView.OnItemClickListener,Serializable {
 
     private DisqueDAdapter adapter;
     private ListView mListView;
@@ -46,6 +49,8 @@ public class PanierDisqueDurList extends AppCompatActivity implements Serializab
         }
         adapter = new DisqueDAdapter(this,R.id.lv_disqueD_pan,disques);
         mListView.setAdapter(adapter);
+        mListView.setOnItemClickListener(this);
+
     }
 
     @Override
@@ -81,14 +86,15 @@ public class PanierDisqueDurList extends AppCompatActivity implements Serializab
 
     }
 
-
-    /*@Override
-    public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         final DisqueD bookmark = disques.get(i);
-        Intent intent = new Intent(PanierProcList.this, DisqueDViewAll.class);
+        Intent intent = new Intent(PanierDisqueDurList.this, PanierDDAll.class);
         intent.putExtra(EXTRA_MAIN_ACTIVITY,bookmark);
         startActivity(intent);
-    }*/
+    }
+
+
 
 
 
