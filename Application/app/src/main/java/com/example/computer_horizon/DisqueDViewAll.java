@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.computer_horizon.models.CarteG;
 import com.example.computer_horizon.models.DisqueD;
@@ -98,7 +99,7 @@ public class DisqueDViewAll extends AppCompatActivity {
         PanierDisqueDurRepositoryService.post(dd).enqueue(new Callback<PanierDisqueDur>() {
             @Override
             public void onResponse(Call<PanierDisqueDur> call, Response<PanierDisqueDur> response) {
-
+                Toast.makeText(DisqueDViewAll.this, "Article ajouté", Toast.LENGTH_SHORT).show();
             }
 
             @Override

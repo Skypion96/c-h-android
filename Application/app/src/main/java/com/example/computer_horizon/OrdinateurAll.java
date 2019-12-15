@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.computer_horizon.models.Panier;
 import com.example.computer_horizon.models.PanierOrdinateur;
@@ -133,7 +134,7 @@ public class OrdinateurAll extends AppCompatActivity {
         PanierOrdinateurRepositoryService.post(ordi).enqueue(new Callback<PanierOrdinateur>() {
             @Override
             public void onResponse(Call<PanierOrdinateur> call, Response<PanierOrdinateur> response) {
-
+                Toast.makeText(OrdinateurAll.this, "Article ajouté", Toast.LENGTH_SHORT).show();
             }
 
             @Override

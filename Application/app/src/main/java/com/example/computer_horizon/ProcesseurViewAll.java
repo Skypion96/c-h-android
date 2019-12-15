@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.computer_horizon.models.Panier;
 import com.example.computer_horizon.models.PanierOrdinateur;
@@ -111,7 +112,7 @@ public class ProcesseurViewAll extends AppCompatActivity {
         PanierProcesseurRepositoryService.post(proc).enqueue(new Callback<PanierProcesseur>() {
             @Override
             public void onResponse(Call<PanierProcesseur> call, Response<PanierProcesseur> response) {
-
+                Toast.makeText(ProcesseurViewAll.this, "Article ajouté", Toast.LENGTH_SHORT).show();
             }
 
             @Override

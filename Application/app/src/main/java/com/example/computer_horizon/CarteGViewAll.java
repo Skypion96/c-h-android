@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.computer_horizon.models.CarteG;
 import com.example.computer_horizon.models.Panier;
@@ -86,7 +87,7 @@ public class CarteGViewAll extends AppCompatActivity {
         PanierCarteGraphiqueRepositoryService.post(cg).enqueue(new Callback<PanierCarteGraphique>() {
             @Override
             public void onResponse(Call<PanierCarteGraphique> call, Response<PanierCarteGraphique> response) {
-
+                Toast.makeText(CarteGViewAll.this, "Article ajouté", Toast.LENGTH_SHORT).show();
             }
 
             @Override
