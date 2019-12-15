@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button panier ;
     Button btnProfil;
+    Button btnConnexion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         panier =  findViewById(R.id.panier);
         btnProfil = findViewById(R.id.btnProfil);
+        btnConnexion = findViewById(R.id.btnConnexion);
         isConnected();
     }
     public void startConnexion(View view) {
@@ -117,11 +119,12 @@ public class MainActivity extends AppCompatActivity {
         if(token != null){
             panier.setEnabled(true);
             btnProfil.setEnabled(true);
-
+            btnConnexion.setText("Déconnexion");
         }
         else {
             panier.setEnabled(false);
             btnProfil.setEnabled(false);
+            btnConnexion.setText("Connexion");
         }
 
 

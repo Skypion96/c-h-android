@@ -60,7 +60,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button12"
+        android:id="@+id/btnConnexion"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="336dp"
         android:layout_height="43dp"
@@ -146,8 +146,9 @@
         android:onClick="startInscription"
         android:text="Inscription"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button12" />
+        app:layout_constraintTop_toBottomOf="@+id/btnConnexion" />
 
     <Button
         android:id="@+id/btnContact"
