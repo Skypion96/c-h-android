@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
 import android.app.AlarmManager;
+import android.app.Application;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -48,10 +49,6 @@ public class MainActivity extends AppCompatActivity {
     Button btnProfil;
     Button btnConnexion;
     Button btnIncription;
-    List<PanierOrdinateur> panierOrdi;
-    List<PanierProcesseur> panierProc;
-    List<PanierCarteGraphique> panierCg;
-    List<PanierDisqueDur> panierDD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
