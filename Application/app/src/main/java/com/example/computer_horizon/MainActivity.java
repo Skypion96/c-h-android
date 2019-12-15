@@ -124,7 +124,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void doQuit(View view){
-        delayedNotification(getApplicationContext(), 5000, 0);
+        boolean panierVide = false;
+
+        if(panierVide){
+            delayedNotification(getApplicationContext(), 5000, 0);
+        }
         finish();
     }
 
@@ -153,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void doContact(View view){
+    public void startContact(View view){
         Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
                 "mailto","la179682@student.helha.be", null));
         startActivity(Intent.createChooser(intent, "Envoyer via"));
