@@ -43,7 +43,6 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MAIN_ACTIVITY = "EXTRA_MAIN_ACTIVITY";
-    private com.example.computer_horizon.models.Ordinateur o =new com.example.computer_horizon.models.Ordinateur("tt","tt",3.25,"tt","tt","55",5,false,"ttt",5,"tt","pppp",5.00);
 
     Button panier ;
     Button btnProfil;

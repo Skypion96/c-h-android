@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ import com.example.computer_horizon.services.PanierOrdinateurRepositoryService;
 import com.example.computer_horizon.services.PanierProcesseurRepositoryService;
 import com.example.computer_horizon.services.ProcesseurRepositoryService;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 import retrofit2.Call;
@@ -43,6 +45,9 @@ public class PanierAffichage extends AppCompatActivity {
     private List<PanierProcesseur> panierProc;
     private List<Processeur> procs;
     private List<com.example.computer_horizon.models.Ordinateur> ordis;
+    private double total;
+    private TextView totalPrix;
+    private Button totalCalc;
 
     private TextView panierOK;
     @Override
@@ -57,6 +62,10 @@ public class PanierAffichage extends AppCompatActivity {
         loadListDD();
         loadListOrdi();
         loadListProc();
+
+        totalCalc = findViewById(R.id.totalCalc);
+        totalCalc.setVisibility(View.VISIBLE);
+
 
     }
 
@@ -272,4 +281,41 @@ public class PanierAffichage extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void total(View view){
+        for(int i =0;i<procs.size();i++){
+            for(int j = 0;j<panierProc.size();j++){
+                if(procs.get(i).getNom().equals(panierProc.get(j).getNom())){
+                    total += procs.get(i).getPrix();
+                }
+            }
+        }
+
+        for(int i =0;i<disques.size();i++){
+            for(int j = 0;j<panierDD.size();j++){
+                if(disques.get(i).getNom().equals(panierDD.get(j).getNom())){
+                    total += disques.get(i).getPrix();
+                }
+            }
+        }
+        for(int i =0;i<cartes.size();i++){
+            for(int j = 0;j<panierCg.size();j++){
+                if(cartes.get(i).getNom().equals(panierCg.get(j).getNom())){
+                    total += cartes.get(i).getPrix();
+                }
+            }
+        }
+
+        for(int i =0;i<ordis.size();i++){
+            for(int j = 0;j<panierOrdi.size();j++){
+                if(ordis.get(i).getNom().equals(panierOrdi.get(j).getNom())){
+                    total += ordis.get(i).getPrix();
+                }
+            }
+        }
+        NumberFormat nm = NumberFormat.getNumberInstance();
+
+        totalPrix = findViewById(R.id.totalPrix);
+        totalPrix.setText(nm.format(total));
+        totalCalc.setVisibility(View.INVISIBLE);
+    }
 }
