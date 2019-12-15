@@ -3,6 +3,7 @@ package com.example.computer_horizon;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,11 +14,13 @@ import android.widget.Toast;
 
 import com.example.computer_horizon.models.CarteG;
 import com.example.computer_horizon.models.DisqueD;
+import com.example.computer_horizon.models.Panier;
 import com.example.computer_horizon.models.PanierCarteGraphique;
 import com.example.computer_horizon.models.PanierDisqueDur;
 import com.example.computer_horizon.models.PanierOrdinateur;
 import com.example.computer_horizon.models.PanierProcesseur;
 import com.example.computer_horizon.models.Processeur;
+import com.example.computer_horizon.models.Utilisateur;
 import com.example.computer_horizon.services.CarteGraphiqueRepositoryService;
 import com.example.computer_horizon.services.DisqueDRepositoryService;
 import com.example.computer_horizon.services.OrdinateurRepositoryService;
@@ -25,9 +28,12 @@ import com.example.computer_horizon.services.PanierCarteGraphiqueRepositoryServi
 import com.example.computer_horizon.services.PanierDisqueDurRepositoryService;
 import com.example.computer_horizon.services.PanierOrdinateurRepositoryService;
 import com.example.computer_horizon.services.PanierProcesseurRepositoryService;
+import com.example.computer_horizon.services.PanierRepositoryService;
 import com.example.computer_horizon.services.ProcesseurRepositoryService;
+import com.example.computer_horizon.services.UserRepositoryService;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -50,6 +56,11 @@ public class PanierAffichage extends AppCompatActivity {
     private Button totalCalc;
 
     private TextView panierOK;
+    SharedPreferences preferencesToken;
+    Utilisateur utilisateur;
+    List<Utilisateur> users;
+    int index;
+    private List<Panier> pan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +76,24 @@ public class PanierAffichage extends AppCompatActivity {
 
         totalCalc = findViewById(R.id.totalCalc);
         totalCalc.setVisibility(View.VISIBLE);
+        pan = new ArrayList<>();
+        index =0;
+        preferencesToken = getSharedPreferences("token", MODE_PRIVATE);
 
+        UserRepositoryService.query().enqueue(new Callback<List<Utilisateur>>() {
+            @Override
+            public void onResponse(Call<List<Utilisateur>> call, Response<List<Utilisateur>> response) {
+                users = response.body();
+                Log.i("test",response.body().toString());
+                findUser();
+            }
+
+
+            @Override
+            public void onFailure(Call<List<Utilisateur>> call, Throwable t) {
+
+            }
+        });
 
     }
 
@@ -82,7 +110,7 @@ public class PanierAffichage extends AppCompatActivity {
             public void onFinished() {
                 NumberFormat nm = NumberFormat.getNumberInstance();
                 suppressionArticlesPanier();
-                panierOK.setText("Paiement éffectué ! Merci de votre achat.");
+                panierOK.setText("Paiement effectué ! Merci de votre achat.");
                 totalPrix.setText(nm.format(0.00));
             }
         }).execute(30);
@@ -220,7 +248,7 @@ public class PanierAffichage extends AppCompatActivity {
 
         for(int i =0;i<procs.size();i++){
             for(int j = 0;j<panierProc.size();j++){
-                if(procs.get(i).getNom().equals(panierProc.get(j).getNom())){
+                if(procs.get(i).getNom().equals(panierProc.get(j).getNom()) && panierProc.get(j).getId() == index){
                     PanierProcesseurRepositoryService.delete(panierProc.get(j).getNom()).enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
@@ -235,7 +263,7 @@ public class PanierAffichage extends AppCompatActivity {
 
         for(int i =0;i<disques.size();i++){
             for(int j = 0;j<panierDD.size();j++){
-                if(disques.get(i).getNom().equals(panierDD.get(j).getNom())){
+                if(disques.get(i).getNom().equals(panierDD.get(j).getNom())&& panierDD.get(j).getId() == index){
                     PanierDisqueDurRepositoryService.delete(panierDD.get(j).getNom()).enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
@@ -249,7 +277,7 @@ public class PanierAffichage extends AppCompatActivity {
         }
         for(int i =0;i<cartes.size();i++){
             for(int j = 0;j<panierCg.size();j++){
-                if(cartes.get(i).getNom().equals(panierCg.get(j).getNom())){
+                if(cartes.get(i).getNom().equals(panierCg.get(j).getNom())&& panierCg.get(j).getId() == index){
                     PanierCarteGraphiqueRepositoryService.delete(panierCg.get(j).getNom()).enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
@@ -264,7 +292,7 @@ public class PanierAffichage extends AppCompatActivity {
 
         for(int i =0;i<ordis.size();i++){
             for(int j = 0;j<panierOrdi.size();j++){
-                if(ordis.get(i).getNom().equals(panierOrdi.get(j).getNom())){
+                if(ordis.get(i).getNom().equals(panierOrdi.get(j).getNom())&& panierOrdi.get(j).getId() == index){
                     PanierOrdinateurRepositoryService.delete(panierOrdi.get(j).getNom()).enqueue(new Callback<Void>() {
                         @Override
                         public void onResponse(Call<Void> call, Response<Void> response) {
@@ -286,7 +314,7 @@ public class PanierAffichage extends AppCompatActivity {
     public void total(View view){
         for(int i =0;i<procs.size();i++){
             for(int j = 0;j<panierProc.size();j++){
-                if(procs.get(i).getNom().equals(panierProc.get(j).getNom())){
+                if(procs.get(i).getNom().equals(panierProc.get(j).getNom())&& panierProc.get(j).getId() == index){
                     total += procs.get(i).getPrix();
                 }
             }
@@ -294,14 +322,14 @@ public class PanierAffichage extends AppCompatActivity {
 
         for(int i =0;i<disques.size();i++){
             for(int j = 0;j<panierDD.size();j++){
-                if(disques.get(i).getNom().equals(panierDD.get(j).getNom())){
+                if(disques.get(i).getNom().equals(panierDD.get(j).getNom())&& panierDD.get(j).getId() == index){
                     total += disques.get(i).getPrix();
                 }
             }
         }
         for(int i =0;i<cartes.size();i++){
             for(int j = 0;j<panierCg.size();j++){
-                if(cartes.get(i).getNom().equals(panierCg.get(j).getNom())){
+                if(cartes.get(i).getNom().equals(panierCg.get(j).getNom())&& panierCg.get(j).getId() == index){
                     total += cartes.get(i).getPrix();
                 }
             }
@@ -309,7 +337,7 @@ public class PanierAffichage extends AppCompatActivity {
 
         for(int i =0;i<ordis.size();i++){
             for(int j = 0;j<panierOrdi.size();j++){
-                if(ordis.get(i).getNom().equals(panierOrdi.get(j).getNom())){
+                if(ordis.get(i).getNom().equals(panierOrdi.get(j).getNom())&& panierOrdi.get(j).getId() == index){
                     total += ordis.get(i).getPrix();
                 }
             }
@@ -319,5 +347,34 @@ public class PanierAffichage extends AppCompatActivity {
         totalPrix = findViewById(R.id.totalPrix);
         totalPrix.setText(nm.format(total));
         totalCalc.setVisibility(View.INVISIBLE);
+    }
+
+    public void findUser(){
+        try {
+            for(int i=0;i<users.size();i++){
+                if(Decode.getUniqueName(preferencesToken.getString("token",null)).equals(users.get(i).getMail())){
+                    utilisateur = users.get(i);
+                }
+            }
+            PanierRepositoryService.query().enqueue(new Callback<List<Panier>>() {
+                @Override
+                public void onResponse(Call<List<Panier>> call, Response<List<Panier>> response) {
+                    pan = response.body();
+                    for(int i =0;i<pan.size();i++){
+                        if(pan.get(i).getMail().equals(utilisateur.getMail())){
+                            index = pan.get(i).getId();
+                        }
+                    }
+                }
+                @Override
+                public void onFailure(Call<List<Panier>> call, Throwable t) {
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 }

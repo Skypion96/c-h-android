@@ -52,7 +52,6 @@ public class Connexion extends AppCompatActivity {
                     SharedPreferences preferencesToken = getSharedPreferences("token", MODE_PRIVATE);
 
                     String token = response.body().getToken();
-                    Toast.makeText(Connexion.this, response.body().getToken(), Toast.LENGTH_SHORT).show();
 
                     preferencesToken.edit().putString("token", token).commit();
 

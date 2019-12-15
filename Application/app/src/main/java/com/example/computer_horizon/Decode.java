@@ -29,12 +29,12 @@ public class Decode {
         return new String(decodedBytes, "UTF-8");
     }
 
-    public static String getMail(String token) throws Exception {
+    public static String getUniqueName(String token) throws Exception {
         String token_decoded = decoded(token);
 
         Gson gson = new Gson();
         DecodedToken name = gson.fromJson(token_decoded, DecodedToken.class);
 
-        return name.getMail();
+        return name.getUnique_name();
     }
 }

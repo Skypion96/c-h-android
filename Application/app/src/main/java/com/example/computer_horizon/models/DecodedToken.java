@@ -5,20 +5,20 @@ import androidx.annotation.NonNull;
 import java.io.Serializable;
 
 public class DecodedToken implements Serializable {
-    private String mail;
+    private String unique_name;
 
 
     public DecodedToken(String mail){
-        this.mail = mail;
+        this.unique_name = mail;
     }
 
     @NonNull
     @Override
     public String toString() {
-        return mail;
+        return unique_name;
     }
 
-    public String getMail() {
-        return mail;
+    public String getUnique_name() {
+        return unique_name;
     }
 }
