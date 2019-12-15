@@ -22,10 +22,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.computer_horizon.models.PanierCarteGraphique;
+import com.example.computer_horizon.models.PanierDisqueDur;
+import com.example.computer_horizon.models.PanierOrdinateur;
+import com.example.computer_horizon.models.PanierProcesseur;
 import com.example.computer_horizon.services.OrdinateurRepositoryService;
+import com.example.computer_horizon.services.PanierCarteGraphiqueRepositoryService;
+import com.example.computer_horizon.services.PanierDisqueDurRepositoryService;
+import com.example.computer_horizon.services.PanierOrdinateurRepositoryService;
+import com.example.computer_horizon.services.PanierProcesseurRepositoryService;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
     Button btnProfil;
     Button btnConnexion;
     Button btnIncription;
+    List<PanierOrdinateur> panierOrdi;
+    List<PanierProcesseur> panierProc;
+    List<PanierCarteGraphique> panierCg;
+    List<PanierDisqueDur> panierDD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,9 +140,58 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void doQuit(View view){
-        boolean panierVide = false;
+        boolean panierVide = true;
 
-        if(panierVide){
+        Call<List<PanierCarteGraphique>> callCG = PanierCarteGraphiqueRepositoryService.query();
+        callCG.enqueue(new Callback<List<PanierCarteGraphique>>() {
+
+            @Override
+            public void onResponse(Call<List<PanierCarteGraphique>> callCG, Response<List<PanierCarteGraphique>> response) {
+                panierCg = response.body();
+            }
+            @Override
+            public void onFailure(Call<List<PanierCarteGraphique>> callCG, Throwable throwable) {
+            }
+        });
+
+        Call<List<PanierDisqueDur>> callDD = PanierDisqueDurRepositoryService.query();
+        callDD.enqueue(new Callback<List<PanierDisqueDur>>() {
+            @Override
+            public void onResponse(Call<List<PanierDisqueDur>> callDD, Response<List<PanierDisqueDur>> response) {
+                panierDD = response.body();
+            }
+            @Override
+            public void onFailure(Call<List<PanierDisqueDur>> callDD, Throwable throwable) {
+            }
+        });
+
+        Call<List<PanierOrdinateur>> callOrdi = PanierOrdinateurRepositoryService.query();
+        callOrdi.enqueue(new Callback<List<PanierOrdinateur>>() {
+            @Override
+            public void onResponse(Call<List<PanierOrdinateur>> callOrdi, Response<List<PanierOrdinateur>> response) {
+                panierOrdi = response.body();
+            }
+            @Override
+            public void onFailure(Call<List<PanierOrdinateur>> callOrdi, Throwable throwable) {
+            }
+        });
+
+        Call<List<PanierProcesseur>> callProc = PanierProcesseurRepositoryService.query();
+        callProc.enqueue(new Callback<List<PanierProcesseur>>() {
+            @Override
+            public void onResponse(Call<List<PanierProcesseur>> callProc, Response<List<PanierProcesseur>> response) {
+                panierProc = response.body();
+            }
+            @Override
+            public void onFailure(Call<List<PanierProcesseur>> callProc, Throwable throwable) {
+            }
+        });
+
+        if(panierCg.size() == 0 && panierDD.size() == 0 && panierOrdi.size() == 0 && panierProc.size() == 0){
+            panierVide = false;
+        }
+
+        if(!panierVide){
             delayedNotification(getApplicationContext(), 5000, 0);
         }
         finish();
