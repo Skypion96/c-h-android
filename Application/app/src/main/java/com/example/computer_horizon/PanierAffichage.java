@@ -54,7 +54,7 @@ public class PanierAffichage extends AppCompatActivity {
     private double total;
     private TextView totalPrix;
     private Button totalCalc;
-
+    NumberFormat nm;
     private TextView panierOK;
     SharedPreferences preferencesToken;
     Utilisateur utilisateur;
@@ -73,6 +73,7 @@ public class PanierAffichage extends AppCompatActivity {
         loadListDD();
         loadListOrdi();
         loadListProc();
+        totalPrix = findViewById(R.id.totalPrix);
 
         totalCalc = findViewById(R.id.totalCalc);
         totalCalc.setVisibility(View.VISIBLE);
@@ -108,7 +109,7 @@ public class PanierAffichage extends AppCompatActivity {
 
             @Override
             public void onFinished() {
-                NumberFormat nm = NumberFormat.getNumberInstance();
+                nm = NumberFormat.getNumberInstance();
                 suppressionArticlesPanier();
                 panierOK.setText("Paiement effectué ! Merci de votre achat.");
                 totalPrix.setText(nm.format(0.00));
@@ -342,9 +343,8 @@ public class PanierAffichage extends AppCompatActivity {
                 }
             }
         }
-        NumberFormat nm = NumberFormat.getNumberInstance();
+        nm  = NumberFormat.getNumberInstance();
 
-        totalPrix = findViewById(R.id.totalPrix);
         totalPrix.setText(nm.format(total));
         totalCalc.setVisibility(View.INVISIBLE);
     }
