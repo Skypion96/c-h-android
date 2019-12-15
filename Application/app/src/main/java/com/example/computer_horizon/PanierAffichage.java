@@ -51,6 +51,7 @@ public class PanierAffichage extends AppCompatActivity {
         setContentView(R.layout.activity_panier_affichage);
 
         progressBar = findViewById(R.id.progressBarA);
+        progressBar.setVisibility(View.INVISIBLE);
         panierOK = findViewById(R.id.panierOK);
         loadListCG();
         loadListDD();
@@ -76,12 +77,12 @@ public class PanierAffichage extends AppCompatActivity {
         }).execute(30);
     }
 
-    public void displayToast(View view) {
-        Toast.makeText(this,"I am a toast!",Toast.LENGTH_LONG).show();
-    }
-
     public void startPaiement(View view){
+
         launchBigTask();
+        progressBar.setVisibility(View.VISIBLE);
+        panierOK.setText("Paiement en cour ...");
+
     }
 
     public void startPanierProc(View view){
@@ -115,7 +116,6 @@ public class PanierAffichage extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<List<PanierCarteGraphique>> call, Throwable throwable) {
-                Toast.makeText(PanierAffichage.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -125,7 +125,6 @@ public class PanierAffichage extends AppCompatActivity {
             public void onResponse(Call<List<CarteG>> call, Response<List<CarteG>> response) {
                 cartes =(response.body());
             }
-
             @Override
             public void onFailure(Call<List<CarteG>> call, Throwable t) {
             }
@@ -136,14 +135,12 @@ public class PanierAffichage extends AppCompatActivity {
     public void loadListDD(){
         Call<List<PanierDisqueDur>> call = PanierDisqueDurRepositoryService.query();
         call.enqueue(new Callback<List<PanierDisqueDur>>() {
-
             @Override
             public void onResponse(Call<List<PanierDisqueDur>> call, Response<List<PanierDisqueDur>> response) {
                 panierDD = response.body();
             }
             @Override
             public void onFailure(Call<List<PanierDisqueDur>> call, Throwable throwable) {
-                Toast.makeText(PanierAffichage.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -153,7 +150,6 @@ public class PanierAffichage extends AppCompatActivity {
             public void onResponse(Call<List<DisqueD>> call, Response<List<DisqueD>> response) {
                 disques =(response.body());
             }
-
             @Override
             public void onFailure(Call<List<DisqueD>> call, Throwable t) {
             }
@@ -163,14 +159,12 @@ public class PanierAffichage extends AppCompatActivity {
     public void loadListOrdi(){
         Call<List<PanierOrdinateur>> call = PanierOrdinateurRepositoryService.query();
         call.enqueue(new Callback<List<PanierOrdinateur>>() {
-
             @Override
             public void onResponse(Call<List<PanierOrdinateur>> call, Response<List<PanierOrdinateur>> response) {
                 panierOrdi = response.body();
             }
             @Override
             public void onFailure(Call<List<PanierOrdinateur>> call, Throwable throwable) {
-                Toast.makeText(PanierAffichage.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -180,7 +174,6 @@ public class PanierAffichage extends AppCompatActivity {
             public void onResponse(Call<List<com.example.computer_horizon.models.Ordinateur>> call, Response<List<com.example.computer_horizon.models.Ordinateur>> response) {
                 ordis =(response.body());
             }
-
             @Override
             public void onFailure(Call<List<com.example.computer_horizon.models.Ordinateur>> call, Throwable t) {
             }
@@ -190,14 +183,12 @@ public class PanierAffichage extends AppCompatActivity {
     public void loadListProc(){
         Call<List<PanierProcesseur>> call = PanierProcesseurRepositoryService.query();
         call.enqueue(new Callback<List<PanierProcesseur>>() {
-
             @Override
             public void onResponse(Call<List<PanierProcesseur>> call, Response<List<PanierProcesseur>> response) {
                 panierProc = response.body();
             }
             @Override
             public void onFailure(Call<List<PanierProcesseur>> call, Throwable throwable) {
-                Toast.makeText(PanierAffichage.this, throwable.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -207,7 +198,6 @@ public class PanierAffichage extends AppCompatActivity {
             public void onResponse(Call<List<Processeur>> call, Response<List<Processeur>> response) {
                 procs =(response.body());
             }
-
             @Override
             public void onFailure(Call<List<Processeur>> call, Throwable t) {
             }
