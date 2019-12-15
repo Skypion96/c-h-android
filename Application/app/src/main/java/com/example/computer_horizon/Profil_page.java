@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.auth0.android.jwt.Claim;
 import com.auth0.android.jwt.JWT;
 import com.example.computer_horizon.models.Utilisateur;
 import com.example.computer_horizon.services.UserRepositoryService;
@@ -22,12 +23,11 @@ public class Profil_page extends AppCompatActivity {
 
     List<Utilisateur> users;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil_page);
+
 
         UserRepositoryService.query().enqueue(new Callback<List<Utilisateur>>() {
             @Override
@@ -55,7 +55,7 @@ public class Profil_page extends AppCompatActivity {
     }
 
     public void startDelete(View view){
-        Intent intent = new Intent(Profil_page.this, MainActivity.class);
+        /*Intent intent = new Intent(Profil_page.this, MainActivity.class);
         startActivity(intent);
         UserRepositoryService.delete("ddd").enqueue(new Callback<Void>() {
             @Override
@@ -67,6 +67,7 @@ public class Profil_page extends AppCompatActivity {
             public void onFailure(Call<Void> call, Throwable t) {
 
             }
-        });
+        });*/
+
     }
 }

@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startInscription(View view) {
-        Intent intent = new Intent(MainActivity.this, Inscription.class);
+        Intent intent = new Intent(MainActivity.this, Profil_page.class);
         startActivity(intent);
     }
 
@@ -106,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
             panier.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    /*Intent intent = new Intent(MainActivity.this, Panier.class);
-                    startActivity(intent);*/
+                    Intent intent = new Intent(MainActivity.this, PanierAffichage.class);
+                    startActivity(intent);
                 }
             });
         }

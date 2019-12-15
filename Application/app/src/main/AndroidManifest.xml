@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PanierDisqueDurList"></activity>
+        <activity android:name=".PanierAffichage"></activity>
+        <activity android:name=".PanierDisqueDurList" />
         <activity android:name=".PanierCarteGList" />
         <activity android:name=".PanierOrdiList" />
         <activity android:name=".PanierProcList" />
